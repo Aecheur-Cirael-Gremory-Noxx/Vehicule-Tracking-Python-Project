@@ -1,6 +1,18 @@
+# Python virtual environment
 .venv/
+
+# JetBrains IDE config
 .idea/
+
+# Python build artifacts
 __pycache__/
 *.pyc
+
+# Data and models (usually large or generated)
 data/
 models/
+
+# Local output files (generated trees, temp scripts)
+tree.txt
+tree_command_shell.txt
+generate_tree.py
