@@ -16,3 +16,10 @@ models/
 tree.txt
 tree_command_shell.txt
 generate_tree.py
+
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# Environment files (si jamais tu en ajoutes plus tard)
+.env
