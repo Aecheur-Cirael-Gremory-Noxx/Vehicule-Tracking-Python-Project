@@ -1,0 +1,39 @@
+The project deals with the design of a software application that will detect and track vehicles based on the video flow received from a fixed-position traffic camera. The application will monitor all vehicles that pass in front of a camera and detect and signal if a certain vehicle has a suspicious trajectory or an aggressive behavior or breaks the current traffic laws. The software application will incorporate several common-based traffic rules that might be broken by a driver. Vehicles will be recognized by shape, color and registration number.
+Compétences
+pouvoir traiter de manière autonome un problème complexe dans l'un des domaines scientifiques et/ou techniques de la spécialité, savoir gérer un projet avec méthode et organisation, démontrer son aptitude à acquérir de nouvelles connaissances, compétences, scientifiques, techniques ou technologiques, savoir évoluer dans l'entreprise en prenant en compte des problématiques industrielle, économique, sociale, règlementaire, environnementale, savoir s'intégrer dans une équipe, gérer les relations hiérarchiques et communiquer avec ses collaborateurs, savoir rédiger un rapport et exposer les résultats d'un projet ingénieur
+
+Semaine 1 et 2: Prise en main et étude bibliographique
+    • Comprendre les bases de la vision par ordinateur appliquée à la surveillance du trafic ;
+    • Faire une revue de littérature sur les techniques d’acquisition d’images de trafic, les méthodes de détection, de classification et de suivi des véhicules, les algorithmes de prédiction de trajectoires. (objectif: Compte-rendu bibliographique préliminaire)
+
+Semaines 3 et 4: Spécification et conception du système
+    • Définir les spécifications fonctionnelles et techniques du système : types de caméras et protocoles d’acquisition, scénarios d’usage (jour/nuit, pluie/neige, trafic dense/léger), choisir les outils et bibliothèques ;
+    • Élaborer l’architecture du système (pipeline de traitement des images). (objectif: cahier de charges + architecture)
+
+Semaine 5 et 6 : Acquisition et annotation des données
+    • Capture des séquences vidéo/images dans différents contextes : conditions de luminosité (jour, nuit, aube/crépuscule), conditions météo (ensoleillé, pluie, neige, brouillard), densité de trafic (faible, moyenne, forte) ;
+    • Annotation les données : identification des véhicules par catégories (voiture, camion, moto, bus), étiquetage des couleurs et formes. (objectif base de données annotés)
+
+Semaines 7 à 10 : Détection et classification des véhicules
+    • Implémentation et test des algorithmes de détection ;
+    • Classification les véhicules ;
+    • Gestion des conditions variées (ajustement des paramètres ou data augmentation).
+
+Semaine 11 à 14 : Suivi multi-objets et gestion des trajectoires
+    • Implémenter le suivi des véhicules ;
+    • Maintenir l’identification des véhicules au fil du temps ;
+    • Enregistrer les trajectoires détectées. (objectif: prototype fonctionnel de suivi multi-objets)
+
+Semaines 15 à 17: Prédiction des trajectoires
+    • Implémentation un modèle prédictif basé sur les réseaux de neurones récurrents ou sur les modèles basés sur Kalman Filter pour les cas simples ;
+    • Prédiction du déplacement futur des véhicules sur des horizons temporels courts. (objectif : Prototype de prédiction avec visualisation +analyse de performance)
+
+Semaines 18 à 19 : Intégration et optimisation
+    • Intégration les modules de détection, suivi et prédiction ;
+    • Tests finaux sur des scénarios complexes. (objectif : Version préliminaire du rapport)
+
+Seamine 20: Finalisation et soutenance
+    • Soutenance devant l’équipe et/ou tuteur académique ;
+    • Retour d’expérience du stagiaire et tuteur. (objectif: Rapport final et présentation de soutenance)
+
+

@@ -1,0 +1,258 @@
+📹 Vidéo (caméra fixe surveillance)
+│
+▼
+🎞️ Prétraitement (OpenCV)
+├── Réduction de bruit basique
+│ └── Filtre gaussien standard (kernel 5x5)
+├── Normalisation jour/nuit
+│ └── Égalisation d'histogramme adaptatif (CLAHE)
+├── Redimensionnement optimal
+│ ├── Resize pour performances (640x640 ou 416x416)
+│ └── Conversion BGR→RGB si nécessaire
+└── Soustraction arrière-plan
+└── MOG2 (détection mouvement simple)
+│
+▼
+📦 Détection véhicules (YOLOv8)
+├── Modèle léger
+│ ├── YOLOv8n (nano) ou YOLOv8s (small)
+│ └── Pré-entraîné COCO dataset
+├── Classes détectées
+│ ├── car (voiture)
+│ ├── truck (camion)
+│ ├── bus (bus)
+│ └── motorcycle (moto)
+├── Post-traitement
+│ ├── Seuil confiance adaptatif (0.5-0.7)
+│ ├── NMS (Non-Maximum Suppression)
+│ └── Filtrage taille minimale objet
+└── Optimisations
+├── Inférence CPU/GPU selon disponibilité
+└── Batch size = 1 (temps réel)
+│
+▼
+👣 Suivi multi-objets (DeepSORT)
+├── Composants essentiels
+│ ├── Filtre Kalman 8-états (x,y,vx,vy,w,h,vw,vh)
+│ ├── Descripteurs visuels (ResNet50 pré-entraîné)
+│ └── Association Hungarian Algorithm
+├── Gestion identités
+│ ├── Track initialization (3 détections cohérentes)
+│ ├── Track deletion (max_age = 30 frames)
+│ └── Métrique cosine distance
+├── Paramètres adaptés stage
+│ ├── max_age = 30 (au lieu de 70)
+│ ├── n_init = 3 (confirmation rapide)
+│ └── max_iou_distance = 0.7
+└── Gestion occlusions basique
+├── Prédiction position Kalman
+└── Réassociation simple par descripteurs
+│
+▼
+🚗 Analyse véhicules
+├── Classification types véhicules
+│ ├── Classes principales
+│ │ ├── Voiture (car)
+│ │ ├── Camion (truck)
+│ │ ├── Bus (bus)
+│ │ └── Moto (motorcycle)
+│ ├── CNN post-classification
+│ │ ├── EfficientNet-B0 pré-entraîné
+│ │ └── Fine-tuning transfer learning
+│ └── Validation cohérence temporelle
+├── Analyse couleur basique
+│ ├── Extraction couleur dominante
+│ │ ├── Conversion BGR → HSV
+│ │ ├── K-means clustering (k=3)
+│ │ └── Zone ROI véhicule uniquement
+│ ├── Classes couleurs standard
+│ │ ├── Blanc, Noir, Gris
+│ │ ├── Rouge, Bleu, Vert
+│ │ └── Jaune (optionnel)
+│ └── Lissage temporel couleur
+├── Reconnaissance plaques (OPTIONNEL)
+│ ├── Détection ROI plaque
+│ │ ├── YOLOv8 fine-tuné plaques
+│ │ └── Validation ratio aspect
+│ ├── OCR simple
+│ │ ├── EasyOCR ou PaddleOCR
+│ │ └── Post-validation format basique
+│ └── Cohérence temporelle track
+└── Métriques cinématiques
+├── Calcul vitesse instantanée
+│ ├── Différentiel position/temps
+│ └── Lissage Kalman
+├── Calcul accélération
+│ ├── Dérivée vitesse
+│ └── Classification : douce, normale, brusque
+└── Distance inter-véhicules
+├── Calcul distance euclidienne
+└── Conversion temps de réaction
+│
+▼
+📈 Analyse comportementale (LSTM)
+├── Architecture réseau basique
+│ ├── Couche d'entrée features
+│ │ ├── Vitesse instantanée
+│ │ ├── Accélération longitudinale
+│ │ ├── Position relative autres véhicules
+│ │ └── Distance inter-véhicules
+│ ├── Encodeur temporel
+│ │ ├── LSTM 64 unités
+│ │ ├── Dropout 0.3
+│ │ ├── Fenêtre glissante 10 secondes
+│ │ └── Activation tanh
+│ ├── Décodeur comportemental
+│ │ ├── Dense 32 unités ReLU
+│ │ ├── Batch normalization
+│ │ └── Sortie 3 classes softmax
+│ └── Fonction de coût
+│ ├── Cross-entropy pondérée
+│ └── Régularisation L2 légère
+├── Classes comportementales
+│ ├── Conduite normale (80%)
+│ │ ├── Vitesse régulière ± 10% limite
+│ │ ├── Accélérations douces (< 2 m/s²)
+│ │ └── Distance sécurité > 3 secondes
+│ ├── Conduite agressive (15%)
+│ │ ├── Excès vitesse > 20% limite
+│ │ ├── Accélérations/freinages brusques (> 4 m/s²)
+│ │ └── Collage véhicule (< 2 secondes)
+│ └── Conduite prudente (5%)
+│ ├── Vitesse < limite - 10%
+│ ├── Grande distance sécurité (> 5 secondes)
+│ └── Accélérations très douces
+├── Features engineering simple
+│ ├── Fenêtre glissante 10 secondes
+│ ├── Normalisation MinMax par feature
+│ ├── Moyennes et écarts-types glissants
+│ └── Encodage temporel basique
+└── Entraînement adapté stage
+├── Dataset déséquilibré géré par pondération
+├── Validation temporelle (pas de data leakage)
+├── Early stopping (patience = 10)
+└── Sauvegarde meilleur modèle
+│
+▼
+🔮 Prédiction trajectoire (Hybride Kalman + LSTM)
+├── Architecture hybride simple
+│ ├── Prédiction court terme (Kalman)
+│ │ ├── Modèle vitesse constante
+│ │ ├── Horizon 1-2 secondes
+│ │ └── Mise à jour 10 Hz
+│ ├── Prédiction moyen terme (LSTM)
+│ │ ├── Entrée : positions XY + vitesses (20 timesteps)
+│ │ ├── LSTM 128 unités bidirectionnel
+│ │ ├── Dense 64 → 32 unités
+│ │ └── Sortie : 10 positions futures (0.5s interval)
+│ └── Fusion prédictions
+│ ├── Pondération 70% Kalman / 30% LSTM (court terme)
+│ ├── Pondération 30% Kalman / 70% LSTM (moyen terme)
+│ └── Transition douce entre modèles
+├── Contraintes physiques basiques
+│ ├── Accélération max véhicule (± 8 m/s²)
+│ ├── Vitesse max route (selon contexte)
+│ └── Trajectoire lissée (pas de téléportation)
+├── Détection risques simples
+│ ├── Zones collision potentielles (2D)
+│ ├── Intersection trajectoires prédites
+│ └── Score probabilité collision (0-1)
+└── Métriques évaluation
+├── ADE (Average Displacement Error)
+├── FDE (Final Displacement Error)
+└── Temps calcul (< 50ms par véhicule)
+│
+▼
+🚨 Système d'alertes
+├── Détection anomalies par seuils
+│ ├── Seuils fixes adaptables
+│ │ ├── Vitesse excessive (> 130% limite)
+│ │ ├── Accélération dangereuse (> 4 m/s²)
+│ │ └── Distance sécurité (< 2 secondes)
+│ ├── Détection changements voie brusques
+│ │ ├── Variation angle > seuil
+│ │ └── Vitesse latérale excessive
+│ └── Prédiction collision
+│ ├── TTC (Time To Collision) < 3s
+│ └── Overlap zones prédites
+├── Classification alertes
+│ ├── 🟡 Attention (vitesse légèrement excessive)
+│ ├── 🟠 Vigilance (comportement agressif détecté)
+│ └── 🔴 Danger (collision potentielle)
+├── Anti-faux positifs
+│ ├── Confirmation temporelle (3 secondes)
+│ ├── Validation contextuelle (pas en bouchon)
+│ └── Historique comportement véhicule
+└── Gestion alertes
+├── File priorité par criticité
+├── Suppression doublons temporels
+└── Log structuré incidents
+│
+▼
+📊 Interface utilisateur (Streamlit)
+├── Dashboard principal
+│ ├── Flux vidéo temps réel
+│ │ ├── Affichage OpenCV via st.image
+│ │ ├── Annotations bounding boxes
+│ │ ├── Trajectoires colorées par comportement
+│ │ └── Overlays alertes visuelles
+│ ├── Panneau statistiques
+│ │ ├── Compteur véhicules par type
+│ │ ├── Vitesses moyennes
+│ │ ├── Distribution comportements
+│ │ └── Alertes dernière heure
+│ └── Contrôles utilisateur
+│ ├── Start/Stop analyse
+│ ├── Réglage seuils alertes
+│ └── Sélection zones surveillance
+├── Pages spécialisées
+│ ├── Historique incidents
+│ │ ├── Liste chronologique
+│ │ ├── Filtres par type/heure
+│ │ └── Replay séquences
+│ ├── Statistiques détaillées
+│ │ ├── Graphiques temporels
+│ │ ├── Heatmaps comportement
+│ │ └── Export CSV/JSON
+│ └── Configuration système
+│ ├── Paramètres détection
+│ ├── Seuils comportement
+│ └── Zones d'intérêt
+├── Fonctionnalités essentielles
+│ ├── Sauvegarde automatique incidents
+│ ├── Screenshots événements
+│ ├── Base données SQLite
+│ └── Logs structurés JSON
+└── Technologies
+├── Streamlit (interface web)
+├── OpenCV (traitement vidéo)
+├── SQLite (stockage local)
+└── Plotly (graphiques interactifs)
+│
+▼
+🔧 Stack technique et déploiement
+├── Frameworks ML/Vision
+│ ├── OpenCV 4.8+ (traitement image/vidéo)
+│ ├── Ultralytics YOLOv8 (détection objets)
+│ ├── TensorFlow/Keras 2.13+ (LSTM)
+│ └── scikit-learn (preprocessing/métriques)
+├── Interface et stockage
+│ ├── Streamlit 1.28+ (interface web)
+│ ├── SQLite 3+ (base données locale)
+│ ├── Pandas (manipulation données)
+│ └── NumPy (calculs matriciels)
+├── Outils développement
+│ ├── Git (versioning code)
+│ ├── Jupyter (prototypage)
+│ ├── pytest (tests unitaires)
+│ └── black (formatage code)
+├── Matériel recommandé
+│ ├── GPU : GTX 1060+ / RTX 2060+ (YOLO + LSTM)
+│ ├── RAM : 16GB minimum (traitement vidéo)
+│ ├── CPU : Intel i5/AMD Ryzen 5+ (8 threads)
+│ └── Stockage : SSD 500GB+ (performances)
+└── Déploiement
+├── Environnement local Python 3.9+
+├── Virtual environment (venv/conda)
+├── Docker (optionnel, fin de stage)
+└── Documentation README détaillée
