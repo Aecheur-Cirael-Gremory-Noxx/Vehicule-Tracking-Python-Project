@@ -1,0 +1,370 @@
+\documentclass[12pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{lipsum}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{array}
+\usepackage{tabularx}
+
+% Configuration de la page
+\geometry{left=3cm,right=2cm,top=3cm,bottom=3cm}
+
+% Configuration des en-têtes et pieds de page
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\textit{Cahier des charges - Projet de suivi de véhicules}}
+
+% Configuration des liens
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=green
+}
+
+% Configuration du listing de code
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    language=Python,
+    showstringspaces=false,
+    commentstyle=\color{green},
+    keywordstyle=\color{blue},
+    stringstyle=\color{red}
+}
+
+% Titre du document
+\title{
+    \vspace{-2cm}
+    \Huge\textbf{CAHIER DES CHARGES}\\
+    \vspace{0.5cm}
+    \Large Système de Suivi de Véhicules\\
+    \vspace{0.3cm}
+    \large Projet Python
+}
+
+\author{
+    \textbf{Nom de l'étudiant:} [À compléter]\\
+    \textbf{Formation:} [À compléter]\\
+    \textbf{Établissement:} [À compléter]\\
+    \textbf{Année académique:} 2024-2025
+}
+
+\date{\today}
+
+\begin{document}
+
+% Page de titre
+\maketitle
+\thispagestyle{empty}
+
+\vfill
+
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{logo_etablissement.png} % À remplacer par le logo de votre établissement
+\end{center}
+
+\vfill
+
+\newpage
+
+% Table des matières
+\tableofcontents
+\newpage
+
+% 1. Introduction
+\section{Introduction}
+
+\subsection{Contexte du projet}
+
+\lipsum[1-2]
+
+Le développement d'un système de suivi de véhicules s'inscrit dans une démarche moderne de gestion et de surveillance en temps réel. Ce projet vise à créer une solution complète permettant le monitoring, l'analyse et la visualisation des données de localisation des véhicules.
+
+\subsection{Objectifs}
+
+\begin{itemize}
+    \item Développer une application de suivi de véhicules en temps réel
+    \item Implémenter des fonctionnalités de géolocalisation
+    \item Créer une interface utilisateur intuitive
+    \item Assurer la persistance des données
+    \item Garantir la sécurité et la fiabilité du système
+\end{itemize}
+
+\subsection{Portée du projet}
+
+\lipsum[3]
+
+% 2. Analyse de l'existant
+\section{Analyse de l'existant}
+
+\subsection{Solutions concurrentes}
+
+\lipsum[4]
+
+\begin{table}[h]
+\centering
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+\hline
+\textbf{Solution} & \textbf{Avantages} & \textbf{Inconvénients} & \textbf{Prix} \\
+\hline
+Solution A & Interface intuitive & Coût élevé & 50€/mois \\
+\hline
+Solution B & Open source & Documentation limitée & Gratuit \\
+\hline
+Solution C & Fonctionnalités avancées & Complexité & 30€/mois \\
+\hline
+\end{tabularx}
+\caption{Comparaison des solutions existantes}
+\end{table}
+
+\subsection{Technologies disponibles}
+
+\lipsum[5]
+
+% 3. Spécifications fonctionnelles
+\section{Spécifications fonctionnelles}
+
+\subsection{Besoins utilisateurs}
+
+\subsubsection{Utilisateur administrateur}
+\begin{itemize}
+    \item Gestion des véhicules (ajout, suppression, modification)
+    \item Configuration du système
+    \item Consultation des rapports
+    \item Gestion des utilisateurs
+\end{itemize}
+
+\subsubsection{Utilisateur standard}
+\begin{itemize}
+    \item Visualisation de la position des véhicules
+    \item Consultation de l'historique
+    \item Génération de rapports simples
+\end{itemize}
+
+\subsection{Fonctionnalités principales}
+
+\subsubsection{Suivi en temps réel}
+\lipsum[6]
+
+\subsubsection{Historique des déplacements}
+\lipsum[7]
+
+\subsubsection{Alertes et notifications}
+\lipsum[8]
+
+\subsection{Cas d'utilisation}
+
+\begin{figure}[h]
+\centering
+% Ici, vous pourriez insérer un diagramme de cas d'utilisation
+\framebox[0.8\textwidth][c]{Diagramme de cas d'utilisation à insérer}
+\caption{Diagramme de cas d'utilisation principal}
+\end{figure}
+
+% 4. Spécifications techniques
+\section{Spécifications techniques}
+
+\subsection{Architecture du système}
+
+\lipsum[9]
+
+\subsubsection{Architecture globale}
+Le système sera développé selon une architecture modulaire comprenant :
+\begin{itemize}
+    \item Module de collecte des données GPS
+    \item Module de traitement et d'analyse
+    \item Module de stockage (base de données)
+    \item Module d'interface utilisateur
+    \item Module de communication
+\end{itemize}
+
+\subsection{Technologies utilisées}
+
+\subsubsection{Langage de programmation}
+\textbf{Python 3.x} - Choisi pour sa simplicité et ses nombreuses bibliothèques.
+
+\subsubsection{Frameworks et bibliothèques}
+\begin{itemize}
+    \item \textbf{Flask/Django} : Framework web
+    \item \textbf{SQLAlchemy} : ORM pour la base de données
+    \item \textbf{Folium/Leaflet} : Cartographie
+    \item \textbf{Pandas} : Manipulation de données
+    \item \textbf{NumPy} : Calculs numériques
+\end{itemize}
+
+\subsection{Base de données}
+
+\lipsum[10]
+
+\begin{lstlisting}[caption=Exemple de structure de table véhicule]
+CREATE TABLE vehicules (
+    id INTEGER PRIMARY KEY,
+    immatriculation VARCHAR(20) NOT NULL,
+    marque VARCHAR(50),
+    modele VARCHAR(50),
+    date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+\end{lstlisting}
+
+% 5. Contraintes
+\section{Contraintes}
+
+\subsection{Contraintes techniques}
+
+\begin{itemize}
+    \item Compatibilité avec les navigateurs modernes
+    \item Performance : temps de réponse < 2 secondes
+    \item Disponibilité : 99.5\% minimum
+    \item Sécurité des données personnelles (RGPD)
+\end{itemize}
+
+\subsection{Contraintes temporelles}
+
+\lipsum[11]
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Phase} & \textbf{Durée} & \textbf{Livrable} \\
+\hline
+Analyse & 2 semaines & Cahier des charges \\
+\hline
+Conception & 3 semaines & Spécifications techniques \\
+\hline
+Développement & 8 semaines & Application fonctionnelle \\
+\hline
+Tests & 2 semaines & Rapport de tests \\
+\hline
+Déploiement & 1 semaine & Système en production \\
+\hline
+\end{tabular}
+\caption{Planning prévisionnel}
+\end{table}
+
+\subsection{Contraintes budgétaires}
+
+\lipsum[12]
+
+% 6. Interface utilisateur
+\section{Interface utilisateur}
+
+\subsection{Maquettes}
+
+\lipsum[13]
+
+\begin{figure}[h]
+\centering
+\framebox[0.8\textwidth][c]{Maquette de l'interface principale à insérer}
+\caption{Interface principale de l'application}
+\end{figure}
+
+\subsection{Ergonomie}
+
+\lipsum[14]
+
+% 7. Tests et validation
+\section{Tests et validation}
+
+\subsection{Stratégie de tests}
+
+\subsubsection{Tests unitaires}
+\lipsum[15]
+
+\subsubsection{Tests d'intégration}
+\lipsum[16]
+
+\subsubsection{Tests fonctionnels}
+\lipsum[17]
+
+\subsection{Critères d'acceptation}
+
+\begin{itemize}
+    \item Toutes les fonctionnalités principales opérationnelles
+    \item Interface utilisateur conforme aux maquettes
+    \item Performance respectée
+    \item Sécurité validée
+\end{itemize}
+
+% 8. Livrables
+\section{Livrables}
+
+\subsection{Documentation}
+
+\begin{itemize}
+    \item Cahier des charges (ce document)
+    \item Documentation technique
+    \item Manuel utilisateur
+    \item Guide d'installation
+\end{itemize}
+
+\subsection{Code source}
+
+\lipsum[18]
+
+\subsection{Tests}
+
+\lipsum[19]
+
+% 9. Maintenance et évolution
+\section{Maintenance et évolution}
+
+\subsection{Maintenance corrective}
+
+\lipsum[20]
+
+\subsection{Évolutions prévues}
+
+\begin{itemize}
+    \item Intégration de nouvelles sources de données
+    \item Amélioration de l'interface mobile
+    \item Ajout de fonctionnalités d'analyse prédictive
+    \item Extension à d'autres types de véhicules
+\end{itemize}
+
+% 10. Conclusion
+\section{Conclusion}
+
+\lipsum[21-22]
+
+Ce cahier des charges définit les bases solides pour le développement d'un système de suivi de véhicules moderne et efficace. Le respect de ces spécifications garantira la livraison d'une solution répondant aux besoins identifiés.
+
+% Annexes
+\newpage
+\appendix
+
+\section{Glossaire}
+
+\begin{description}
+    \item[API] Application Programming Interface
+    \item[GPS] Global Positioning System
+    \item[ORM] Object-Relational Mapping
+    \item[RGPD] Règlement Général sur la Protection des Données
+    \item[UI/UX] User Interface / User Experience
+\end{description}
+
+\section{Références}
+
+\begin{enumerate}
+    \item Documentation Python : \url{https://docs.python.org/}
+    \item Flask Framework : \url{https://flask.palletsprojects.com/}
+    \item Folium Documentation : \url{https://folium.readthedocs.io/}
+    \item Règlement RGPD : \url{https://gdpr.eu/}
+\end{enumerate}
+
+\end{document}
