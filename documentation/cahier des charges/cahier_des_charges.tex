@@ -91,50 +91,155 @@
 
 \subsection{Contexte du projet}
 
-\lipsum[1-2]
+Dans le cadre d'un projet académique de 20 semaines proposé par l'Académie Militaire Technique de Bucarest, nous développons une application de surveillance routière intelligente. Les statistiques mondiales révèlent que les comportements de conduite agressifs contribuent à plus de 56\% des accidents mortels, avec 1,35 million de décès annuels selon l'Organisation Mondiale de la Santé.
 
-Le développement d'un système de suivi de véhicules s'inscrit dans une démarche moderne de gestion et de surveillance en temps réel. Ce projet vise à créer une solution complète permettant le monitoring, l'analyse et la visualisation des données de localisation des véhicules.
+La surveillance du trafic routier représente un enjeu crucial pour :
+
+\begin{itemize}
+    \item \textbf{La sécurité publique} : Prévention des accidents et protection des usagers
+    \item \textbf{L'application de la loi} : Détection automatique des infractions routières
+    \item \textbf{La gestion du trafic} : Optimisation des flux et identification des zones à risque
+    \item \textbf{La collecte de données} : Analyse comportementale pour l'amélioration des infrastructures
+\end{itemize}
+
+Ce projet s'inscrit dans une démarche d'apprentissage pratique des technologies de vision par ordinateur et d'intelligence artificielle appliquées à des problématiques réelles de sécurité routière.
 
 \subsection{Objectifs}
 
+\subsubsection{Objectif principal}
+Concevoir et développer une application logicielle capable de détecter et suivre les véhicules à partir d'un flux vidéo provenant d'une caméra de surveillance routière fixe, en identifiant les comportements dangereux et les infractions.
+
+\subsubsection{Objectifs spécifiques}
+
 \begin{itemize}
-    \item Développer une application de suivi de véhicules en temps réel
-    \item Implémenter des fonctionnalités de géolocalisation
-    \item Créer une interface utilisateur intuitive
-    \item Assurer la persistance des données
-    \item Garantir la sécurité et la fiabilité du système
+    \item \textbf{Détection et suivi} : Identifier et suivre en temps réel tous les véhicules dans le champ de vision
+    \item \textbf{Reconnaissance} : Extraire les caractéristiques des véhicules (forme, couleur, plaque d'immatriculation)
+    \item \textbf{Analyse comportementale} : Détecter les trajectoires suspectes et comportements agressifs
+    \item \textbf{Identification d'infractions} : Reconnaître les violations des règles de circulation
+    \item \textbf{Alertes} : Signaler automatiquement les anomalies détectées
 \end{itemize}
 
 \subsection{Portée du projet}
 
-\lipsum[3]
+\subsubsection{Périmètre fonctionnel}
+L'application couvrira :
+
+\begin{itemize}
+    \item \textbf{Détection multi-véhicules} : Traitement simultané de plusieurs véhicules
+    \item \textbf{Suivi de trajectoire} : Analyse du mouvement dans le temps
+    \item \textbf{Classification comportementale} :
+    \begin{itemize}
+        \item Conduite normale
+        \item Comportement agressif (accélérations/freinages brusques, zigzag)
+        \item Trajectoires suspectes
+    \end{itemize}
+    \item \textbf{Détection d'infractions} :
+    \begin{itemize}
+        \item Excès de vitesse
+        \item Non-respect des distances de sécurité
+        \item Changements de voie dangereux
+        \item Franchissement de ligne continue
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Limites du projet}
+
+\textbf{Contraintes techniques :}
+\begin{itemize}
+    \item Caméra fixe uniquement (pas de suivi mobile)
+    \item Traitement en différé acceptable (pas d'exigence temps réel strict)
+    \item Conditions météorologiques normales
+\end{itemize}
+
+\textbf{Contraintes académiques :}
+\begin{itemize}
+    \item Durée limitée à 20 semaines
+    \item Ressources étudiantes
+    \item Focus sur la démonstration de faisabilité
+\end{itemize}
 
 % 2. Analyse de l'existant
 \section{Analyse de l'existant}
 
 \subsection{Solutions concurrentes}
 
-\lipsum[4]
+\subsubsection{Solutions commerciales}
 
-\begin{table}[h]
-\centering
-\begin{tabularx}{\textwidth}{|X|X|X|X|}
-\hline
-\textbf{Solution} & \textbf{Avantages} & \textbf{Inconvénients} & \textbf{Prix} \\
-\hline
-Solution A & Interface intuitive & Coût élevé & 50€/mois \\
-\hline
-Solution B & Open source & Documentation limitée & Gratuit \\
-\hline
-Solution C & Fonctionnalités avancées & Complexité & 30€/mois \\
-\hline
-\end{tabularx}
-\caption{Comparaison des solutions existantes}
-\end{table}
+\textbf{Systèmes de contrôle automatisé} : Radars fixes avec reconnaissance de plaques
+\begin{itemize}
+    \item \textit{Avantages} : Précision, fiabilité prouvée
+    \item \textit{Limites} : Coût élevé, détection limitée aux excès de vitesse
+\end{itemize}
+
+\textbf{Caméras intelligentes} : Solutions intégrées type "smart cameras"
+\begin{itemize}
+    \item \textit{Avantages} : Traitement embarqué, détection multi-infractions
+    \item \textit{Limites} : Prix prohibitif pour un projet étudiant
+\end{itemize}
+
+\subsubsection{Projets de recherche}
+
+\textbf{SHRP2 Naturalistic Driving Study} : Base de données comportementales
+\begin{itemize}
+    \item \textit{Pertinence} : Référence pour la classification des comportements
+    \item \textit{Limitation} : Données embarquées, non adaptées aux caméras fixes
+\end{itemize}
+
+\textbf{D³ System} : Détection fine de comportements anormaux
+\begin{itemize}
+    \item \textit{Intérêt} : Taxonomie des comportements (6 types)
+    \item \textit{Complexité} : Trop avancé pour notre délai
+\end{itemize}
 
 \subsection{Technologies disponibles}
 
-\lipsum[5]
+\subsubsection{Détection et suivi d'objets}
+
+\textbf{YOLO (You Only Look Once)} : Détection temps réel
+\begin{itemize}
+    \item \textit{Avantages} : Rapide, précis, bien documenté
+    \item \textit{Adaptation} : Versions légères (YOLOv5, YOLOv8) adaptées au projet
+\end{itemize}
+
+\textbf{Méthodes traditionnelles} : Filtres de Kalman pour le suivi
+\begin{itemize}
+    \item \textit{Avantages} : Léger, éprouvé, simple à implémenter
+    \item \textit{Usage} : Complémentaire à YOLO pour le suivi temporel
+\end{itemize}
+
+\subsubsection{Analyse comportementale}
+
+\textbf{Approches statistiques} :
+\begin{itemize}
+    \item Seuillage sur accélérations/décélérations
+    \item Analyse de trajectoire par régression
+    \item \textit{Avantage} : Simple, interprétable
+\end{itemize}
+
+\textbf{Machine Learning basique} :
+\begin{itemize}
+    \item SVM pour classification binaire (normal/agressif)
+    \item Random Forest pour détection multi-classes
+    \item \textit{Compromis} : Performance acceptable avec complexité maîtrisée
+\end{itemize}
+
+\subsubsection{Reconnaissance de plaques}
+
+\textbf{OpenALPR} : Bibliothèque open-source
+\begin{itemize}
+    \item \textit{Avantages} : Gratuit, performant, multi-régions
+    \item \textit{Intégration} : API simple pour notre application
+\end{itemize}
+
+\subsubsection{Frameworks de développement}
+
+\begin{itemize}
+    \item \textbf{OpenCV} : Vision par ordinateur
+    \item \textbf{Python} : Prototypage rapide avec écosystème riche
+    \item \textbf{TensorFlow/PyTorch} : Si apprentissage profond nécessaire
+\end{itemize}
+
+Cette approche pragmatique permet de construire une solution fonctionnelle dans le délai imparti, tout en offrant des possibilités d'évolution future.
 
 % 3. Spécifications fonctionnelles
 \section{Spécifications fonctionnelles}
