@@ -10,7 +10,7 @@ import torch
 # -----------------------------------------------------------------------------
 
 # Chemin vers la vidéo d'entrée à analyser
-INPUT_VIDEO_PATH = "cars_exemple_footage.mp4"
+INPUT_VIDEO_PATH = "cars_exemple_footag_short.mp4"
 
 # Dossier de sortie pour les résultats
 OUTPUT_DIR = "output"

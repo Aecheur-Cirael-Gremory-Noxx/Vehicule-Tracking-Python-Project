@@ -20,7 +20,7 @@ class VehicleDetectorTracker:
         définis dans config.py
         """
         self.logger = logging.getLogger(__name__)
-        logging.basicConfig(level=logging.INFO)
+        self.logger.setLevel(logging.DEBUG)
         
         # Initialiser YOLO
         self._init_yolo()
@@ -77,36 +77,46 @@ class VehicleDetectorTracker:
             frame_shape: (height, width) de la frame
             
         Returns:
-            Liste de tuples (bbox, confidence, class_id) au format DeepSORT
+            Liste de tuples (bbox, confidence, class_name) au format DeepSORT
             où bbox = [x, y, w, h] (coordonnées absolues)
         """
         detections = []
         
-        if yolo_results and len(yolo_results) > 0:
-            # Extraire les boîtes, scores et classes
-            boxes = yolo_results[0].boxes
-            
-            if boxes is not None and len(boxes) > 0:
-                # Convertir en numpy arrays
-                xyxy = boxes.xyxy.cpu().numpy()  # [x1, y1, x2, y2]
-                confidences = boxes.conf.cpu().numpy()
-                class_ids = boxes.cls.cpu().numpy().astype(int)
+        try:
+            if yolo_results and len(yolo_results) > 0:
+                # Extraire les boîtes, scores et classes
+                boxes = yolo_results[0].boxes
                 
-                for i, (bbox, conf, cls_id) in enumerate(zip(xyxy, confidences, class_ids)):
-                    # Filtrer par classe de véhicule et confiance
-                    if cls_id in config.VEHICLE_CLASSES and conf >= config.CONFIDENCE_THRESHOLD:
-                        # Convertir de [x1, y1, x2, y2] vers [x, y, w, h]
-                        x1, y1, x2, y2 = bbox
-                        x = x1
-                        y = y1
-                        w = x2 - x1
-                        h = y2 - y1
+                if boxes is not None and len(boxes) > 0:
+                    # Convertir en numpy arrays de manière sécurisée
+                    xyxy = boxes.xyxy.cpu().numpy()  # [x1, y1, x2, y2]
+                    confidences = boxes.conf.cpu().numpy()
+                    class_ids = boxes.cls.cpu().numpy()
+                    
+                    # Vérifier que nous avons des données
+                    if len(xyxy) > 0 and len(confidences) > 0 and len(class_ids) > 0:
+                        # Convertir class_ids en entiers de manière sécurisée
+                        class_ids = np.array(class_ids, dtype=np.int64)
                         
-                        # Vérifier que la boîte est valide
-                        if w > 0 and h > 0:
-                            # Format DeepSORT: ([x, y, w, h], confidence, class_name)
-                            detections.append(([x, y, w, h], conf, self._get_class_name(cls_id)))
-        
+                        for i in range(len(xyxy)):
+                            bbox = xyxy[i]
+                            conf = float(confidences[i])
+                            cls_id = int(class_ids[i])
+                            
+                            # Filtrer par classe de véhicule et confiance
+                            if cls_id in config.VEHICLE_CLASSES and conf >= config.CONFIDENCE_THRESHOLD:
+                                # Convertir de [x1, y1, x2, y2] vers [x, y, w, h]
+                                x1, y1, x2, y2 = map(float, bbox)
+                                x, y, w, h = x1, y1, x2-x1, y2-y1
+                                
+                                # Vérifier que la boîte est valide
+                                if w > 0 and h > 0:
+                                    # Format DeepSORT: ([x, y, w, h], confidence, class_name)
+                                    detections.append(([x, y, w, h], conf, "vehicle"))
+                                    
+        except Exception as e:
+            self.logger.error(f"Erreur conversion YOLO vers DeepSORT: {e}")
+            
         return detections
     
     def _get_class_name(self, class_id: int) -> str:
@@ -151,8 +161,27 @@ class VehicleDetectorTracker:
             # 2. Conversion au format DeepSORT
             detections = self._yolo_to_deepsort_format(yolo_results, frame.shape[:2])
             
+            # Debug: Afficher les détections
+            if len(detections) > 0:
+                self.logger.debug(f"Détections trouvées: {len(detections)}")
+                self.logger.debug(f"Premier élément: {detections[0]}")
+                self.logger.debug(f"Type bbox: {type(detections[0][0])}")
+                self.logger.debug(f"Contenu bbox: {detections[0][0]}")
+            
             # 3. Mise à jour du tracker
-            tracks = self.deepsort.update_tracks(detections, frame=frame)
+            tracks = []
+            if len(detections) > 0:
+                try:
+                    tracks = self.deepsort.update_tracks(detections, frame=frame)
+                except Exception as e:
+                    self.logger.error(f"Erreur update_tracks avec détections: {e}")
+            else:
+                try:
+                    # Maintenir la continuité du tracking même sans nouvelles détections
+                    tracks = self.deepsort.update_tracks([], frame=frame)
+                except Exception as e:
+                    self.logger.debug(f"Pas de tracking à mettre à jour: {e}")
+                    tracks = []
             
             # 4. Annotation de la frame
             annotated_frame = self._annotate_frame(frame.copy(), tracks)
@@ -174,33 +203,55 @@ class VehicleDetectorTracker:
         Returns:
             Frame annotée
         """
-        for track in tracks:
-            if not track.is_confirmed():
-                continue
+        try:
+            for track in tracks:
+                if not track.is_confirmed():
+                    continue
+                    
+                # Extraire les informations du track
+                track_id = track.track_id
+                bbox = track.to_ltrb()  # [left, top, right, bottom]
                 
-            # Extraire les informations du track
-            track_id = track.track_id
-            bbox = track.to_ltrb()  # [left, top, right, bottom]
-            
-            # Convertir les coordonnées en entiers
-            x1, y1, x2, y2 = map(int, bbox)
-            
-            # Dessiner la boîte englobante
-            color = self._get_track_color(track_id)
-            cv2.rectangle(frame, (x1, y1), (x2, y2), color, config.BOX_THICKNESS)
-            
-            # Ajouter l'ID du track
-            label = f"ID: {track_id}"
-            label_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 
-                                       config.FONT_SCALE, config.FONT_THICKNESS)[0]
-            
-            # Background pour le texte
-            cv2.rectangle(frame, (x1, y1 - label_size[1] - 10), 
-                         (x1 + label_size[0], y1), color, -1)
-            
-            # Texte de l'ID
-            cv2.putText(frame, label, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX,
-                       config.FONT_SCALE, (255, 255, 255), config.FONT_THICKNESS)
+                # Debug pour voir le contenu exact
+                self.logger.debug(f"Track {track_id} bbox type: {type(bbox)}, contenu: {bbox}")
+                if len(bbox) > 0:
+                    self.logger.debug(f"Premier élément bbox type: {type(bbox[0])}, valeur: {repr(bbox[0])}")
+                
+                # Convertir les coordonnées en entiers de manière sécurisée
+                try:
+                    # Vérifier si bbox contient des valeurs numériques
+                    if any(isinstance(coord, str) for coord in bbox):
+                        self.logger.error(f"Bbox contient des chaînes: {bbox}")
+                        continue
+                    
+                    x1, y1, x2, y2 = [int(float(coord)) for coord in bbox]
+                except (ValueError, TypeError) as e:
+                    self.logger.warning(f"Bbox invalide pour track {track_id}: {bbox}, erreur: {e}")
+                    continue
+                
+                # Vérifier que les coordonnées sont valides
+                if x1 >= x2 or y1 >= y2:
+                    continue
+                
+                # Dessiner la boîte englobante
+                color = self._get_track_color(track_id)
+                cv2.rectangle(frame, (x1, y1), (x2, y2), color, int(config.BOX_THICKNESS))
+                
+                # Ajouter l'ID du track
+                label = f"ID: {track_id}"
+                label_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 
+                                           float(config.FONT_SCALE), int(config.FONT_THICKNESS))[0]
+                
+                # Background pour le texte
+                cv2.rectangle(frame, (x1, y1 - label_size[1] - 10), 
+                             (x1 + label_size[0], y1), color, -1)
+                
+                # Texte de l'ID
+                cv2.putText(frame, label, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX,
+                           float(config.FONT_SCALE), (255, 255, 255), int(config.FONT_THICKNESS))
+                           
+        except Exception as e:
+            self.logger.error(f"Erreur annotation frame: {e}")
         
         return frame
     

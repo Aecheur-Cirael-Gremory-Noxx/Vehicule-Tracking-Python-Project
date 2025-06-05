@@ -265,7 +265,7 @@ class VisualizationRenderer:
             text_color = (255, 255, 255)  # Blanc
         else:
             # Pour les tentatives, utiliser une version plus transparente
-            bg_color = tuple(int(c * 0.7) for c in color)
+            bg_color = tuple(int(float(c) * 0.7) for c in color)
             text_color = (255, 255, 255)
         
         # Dessiner le fond du label
@@ -390,7 +390,7 @@ class VisualizationRenderer:
             alpha = i / len(points)
             
             # Couleur avec transparence
-            line_color = tuple(int(c * alpha + 50 * (1 - alpha)) for c in color)
+            line_color = tuple(int(float(c) * alpha + 50 * (1 - alpha)) for c in color)
             
             cv2.line(frame, points[i-1], points[i], line_color, 2)
         

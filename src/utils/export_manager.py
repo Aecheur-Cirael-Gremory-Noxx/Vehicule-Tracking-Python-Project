@@ -35,26 +35,9 @@ class VideoCodec:
     
     @staticmethod
     def get_h264_fourcc() -> int:
-        """Retourne le meilleur codec H264 disponible."""
-        # Essayer différentes variantes H264
-        codecs_to_try = ['H264', 'h264', 'X264', 'x264', 'AVC1', 'avc1']
-        
-        for codec in codecs_to_try:
-            try:
-                fourcc = cv2.VideoWriter_fourcc(*codec)
-                # Test de création pour valider le codec
-                test_writer = cv2.VideoWriter(
-                    'test_codec.mp4', fourcc, 30.0, (640, 480)
-                )
-                if test_writer.isOpened():
-                    test_writer.release()
-                    os.remove('test_codec.mp4')
-                    return fourcc
-            except:
-                continue
-        
-        # Fallback vers mp4v si H264 non disponible
-        logging.getLogger(__name__).warning("H264 non disponible, utilisation de mp4v")
+        """Retourne le meilleur codec disponible."""
+        # Utiliser directement mp4v qui est plus compatible
+        logging.getLogger(__name__).info("Utilisation du codec mp4v pour compatibilité")
         return cv2.VideoWriter_fourcc(*'mp4v')
     
     @staticmethod

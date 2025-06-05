@@ -218,7 +218,9 @@ class VideoProcessor:
             return annotated_frame
             
         except Exception as e:
+            import traceback
             self.logger.error(f"Erreur traitement frame {frame_number}: {e}")
+            self.logger.error(f"Traceback: {traceback.format_exc()}")
             return frame  # Retourner frame originale en cas d'erreur
     
     def _display_progress(self):
