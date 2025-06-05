@@ -3,7 +3,7 @@ import numpy as np
 import logging
 from typing import List, Tuple, Optional
 from ultralytics import YOLO
-from deep_sort_realtime import DeepSort
+from deep_sort_realtime.deepsort_tracker import DeepSort
 
 import config
 

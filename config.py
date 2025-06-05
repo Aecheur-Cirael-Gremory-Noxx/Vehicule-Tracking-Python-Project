@@ -10,7 +10,7 @@ import torch
 # -----------------------------------------------------------------------------
 
 # Chemin vers la vidéo d'entrée à analyser
-INPUT_VIDEO_PATH = "data/input_video.mp4"
+INPUT_VIDEO_PATH = "cars_exemple_footage.mp4"
 
 # Dossier de sortie pour les résultats
 OUTPUT_DIR = "output"
@@ -20,7 +20,7 @@ YOLO_MODEL_PATH = "yolov8n.pt"
 
 # Création automatique des dossiers s'ils n'existent pas
 os.makedirs(OUTPUT_DIR, exist_ok=True)
-os.makedirs(os.path.dirname(YOLO_MODEL_PATH), exist_ok=True)
+# Note: YOLO_MODEL_PATH est juste un fichier dans le répertoire courant, pas besoin de créer un dossier
 
 # -----------------------------------------------------------------------------
 # PARAMÈTRES YOLO
