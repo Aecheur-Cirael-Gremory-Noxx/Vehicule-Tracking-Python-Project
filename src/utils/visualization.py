@@ -53,13 +53,19 @@ class ColorManager:
         Returns:
             Couleur BGR
         """
+        # Convertir track_id en entier de manière sécurisée
+        try:
+            track_id_int = int(track_id)
+        except (ValueError, TypeError):
+            track_id_int = hash(str(track_id)) % 1000
+        
         # Utiliser le golden ratio pour répartir les teintes
         golden_ratio = 0.618033988749895
-        hue = (track_id * golden_ratio) % 1.0
+        hue = (track_id_int * golden_ratio) % 1.0
         
         # Saturation et valeur élevées pour des couleurs vives
-        saturation = 0.8 + 0.2 * ((track_id * 0.1) % 1.0)  # 0.8-1.0
-        value = 0.8 + 0.2 * ((track_id * 0.07) % 1.0)      # 0.8-1.0
+        saturation = 0.8 + 0.2 * ((track_id_int * 0.1) % 1.0)  # 0.8-1.0
+        value = 0.8 + 0.2 * ((track_id_int * 0.07) % 1.0)      # 0.8-1.0
         
         # Convertir HSV vers RGB puis BGR
         rgb = colorsys.hsv_to_rgb(hue, saturation, value)

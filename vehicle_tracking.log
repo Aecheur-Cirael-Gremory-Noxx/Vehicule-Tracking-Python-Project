@@ -6213,3 +6213,1052 @@ TypeError: can't multiply sequence by non-int of type 'float'
 2025-06-05 09:32:46,733 - src.video_processor - INFO - ==================================================
 2025-06-05 09:32:46,733 - src.video_processor - INFO - Traitement terminé: 120 frames traitées
 2025-06-05 09:32:46,734 - src.utils.video_capture - INFO - Ressources vidéo libérées pour cars_exemple_footage_short.mp4
+2025-06-05 09:36:42,662 - src.video_processor - INFO - VideoProcessor initialisé: cars_exemple_footage_short.mp4 → output/cars_exemple_footage_short_tracked_20250605_093642.mp4
+2025-06-05 09:36:42,672 - src.utils.video_capture - INFO - Vidéo chargée: cars_exemple_footage_short.mp4
+2025-06-05 09:36:42,672 - src.utils.video_capture - INFO - Métadonnées: 30.21978021978022 FPS, 640x360, 121 frames, 4.00s
+2025-06-05 09:36:42,672 - src.video_processor - INFO - Vidéo chargée: 30.21978021978022 FPS, 640x360
+2025-06-05 09:36:42,810 - src.detection.detector_tracker - INFO - YOLO chargé: yolov8n.pt sur cpu
+2025-06-05 09:36:44,118 - deep_sort_realtime.embedder.embedder_pytorch - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2025-06-05 09:36:44,118 - deep_sort_realtime.embedder.embedder_pytorch - INFO - - gpu enabled: False
+2025-06-05 09:36:44,118 - deep_sort_realtime.embedder.embedder_pytorch - INFO - - half precision: False
+2025-06-05 09:36:44,118 - deep_sort_realtime.embedder.embedder_pytorch - INFO - - max batch size: 16
+2025-06-05 09:36:44,118 - deep_sort_realtime.embedder.embedder_pytorch - INFO - - expects BGR: True
+2025-06-05 09:36:44,203 - deep_sort_realtime.deepsort_tracker - INFO - DeepSort Tracker initialised
+2025-06-05 09:36:44,203 - deep_sort_realtime.deepsort_tracker - INFO - - max age: 30
+2025-06-05 09:36:44,203 - deep_sort_realtime.deepsort_tracker - INFO - - appearance threshold: 0.3
+2025-06-05 09:36:44,203 - deep_sort_realtime.deepsort_tracker - INFO - - nms threshold: OFF
+2025-06-05 09:36:44,203 - deep_sort_realtime.deepsort_tracker - INFO - - max num of appearance features: 100
+2025-06-05 09:36:44,203 - deep_sort_realtime.deepsort_tracker - INFO - - overriding track class : No
+2025-06-05 09:36:44,203 - deep_sort_realtime.deepsort_tracker - INFO - - today given : No
+2025-06-05 09:36:44,204 - deep_sort_realtime.deepsort_tracker - INFO - - in-build embedder : Yes
+2025-06-05 09:36:44,204 - deep_sort_realtime.deepsort_tracker - INFO - - polygon detections : No
+2025-06-05 09:36:44,204 - src.detection.detector_tracker - INFO - DeepSORT initialisé avec les paramètres de config
+2025-06-05 09:36:44,204 - src.detection.detector_tracker - INFO - VehicleDetectorTracker initialisé avec succès
+2025-06-05 09:36:44,204 - src.tracking.track_manager - INFO - TrackManager initialisé
+2025-06-05 09:36:44,204 - src.tracking.trajectory_storage - INFO - TrajectoryStorage initialisé (max_length: 30)
+2025-06-05 09:36:44,204 - src.utils.visualization - INFO - VisualizationRenderer initialisé
+2025-06-05 09:36:44,204 - src.utils.export_manager - INFO - ExportManager initialisé: output/cars_exemple_footage_short_tracked_20250605_093642.mp4
+2025-06-05 09:36:44,204 - src.utils.export_manager - INFO - Utilisation du codec mp4v pour compatibilité
+2025-06-05 09:36:44,205 - src.utils.export_manager - INFO - VideoWriter créé: 30.21978021978022 FPS, 640x360, qualité: 90
+2025-06-05 09:36:44,206 - src.video_processor - INFO - ExportManager initialisé: 30.21978021978022 FPS, 640x360
+2025-06-05 09:36:44,206 - src.video_processor - INFO - Tous les composants initialisés avec succès
+2025-06-05 09:36:44,206 - src.video_processor - INFO - Début du traitement vidéo...
+2025-06-05 09:36:44,396 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:36:44,396 - src.detection.detector_tracker - DEBUG - Premier élément: ([38.64637756347656, 1.8494558334350586, 36.88233947753906, 21.01039981842041], 0.6141248941421509, 'vehicle')
+2025-06-05 09:36:44,396 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:36:44,396 - src.detection.detector_tracker - DEBUG - Contenu bbox: [38.64637756347656, 1.8494558334350586, 36.88233947753906, 21.01039981842041]
+2025-06-05 09:36:44,451 - src.video_processor - ERROR - Erreur traitement frame 1: can't multiply sequence by non-int of type 'float'
+2025-06-05 09:36:44,452 - src.video_processor - ERROR - Traceback: Traceback (most recent call last):
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/video_processor.py", line 207, in _process_single_frame
+    annotated_frame = self.visualizer.render_tracks(frame, all_track_infos)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 129, in render_tracks
+    annotated_frame = self._render_single_track(annotated_frame, track)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 148, in _render_single_track
+    color = self.color_manager.get_track_color(track.id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 40, in get_track_color
+    color = self._generate_unique_color(track_id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 58, in _generate_unique_color
+    hue = (track_id * golden_ratio) % 1.0
+           ~~~~~~~~~^~~~~~~~~~~~~~
+TypeError: can't multiply sequence by non-int of type 'float'
+
+2025-06-05 09:36:44,548 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:36:44,548 - src.detection.detector_tracker - DEBUG - Premier élément: ([38.410316467285156, 1.9608259201049805, 37.35564422607422, 21.173348426818848], 0.653847336769104, 'vehicle')
+2025-06-05 09:36:44,548 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:36:44,548 - src.detection.detector_tracker - DEBUG - Contenu bbox: [38.410316467285156, 1.9608259201049805, 37.35564422607422, 21.173348426818848]
+2025-06-05 09:36:44,599 - src.video_processor - ERROR - Erreur traitement frame 2: can't multiply sequence by non-int of type 'float'
+2025-06-05 09:36:44,600 - src.video_processor - ERROR - Traceback: Traceback (most recent call last):
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/video_processor.py", line 207, in _process_single_frame
+    annotated_frame = self.visualizer.render_tracks(frame, all_track_infos)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 129, in render_tracks
+    annotated_frame = self._render_single_track(annotated_frame, track)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 148, in _render_single_track
+    color = self.color_manager.get_track_color(track.id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 40, in get_track_color
+    color = self._generate_unique_color(track_id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 58, in _generate_unique_color
+    hue = (track_id * golden_ratio) % 1.0
+           ~~~~~~~~~^~~~~~~~~~~~~~
+TypeError: can't multiply sequence by non-int of type 'float'
+
+2025-06-05 09:36:44,697 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:36:44,697 - src.detection.detector_tracker - DEBUG - Premier élément: ([38.23115539550781, 2.021728515625, 37.55585479736328, 21.378952026367188], 0.6458252668380737, 'vehicle')
+2025-06-05 09:36:44,697 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:36:44,697 - src.detection.detector_tracker - DEBUG - Contenu bbox: [38.23115539550781, 2.021728515625, 37.55585479736328, 21.378952026367188]
+2025-06-05 09:36:44,829 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.298        2.01      75.756      23.346]
+2025-06-05 09:36:44,829 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.297673197689356
+2025-06-05 09:36:44,829 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:36:44,830 - src.video_processor - ERROR - Erreur traitement frame 3: can't multiply sequence by non-int of type 'float'
+2025-06-05 09:36:44,830 - src.video_processor - ERROR - Traceback: Traceback (most recent call last):
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/video_processor.py", line 207, in _process_single_frame
+    annotated_frame = self.visualizer.render_tracks(frame, all_track_infos)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 129, in render_tracks
+    annotated_frame = self._render_single_track(annotated_frame, track)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 148, in _render_single_track
+    color = self.color_manager.get_track_color(track.id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 40, in get_track_color
+    color = self._generate_unique_color(track_id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 58, in _generate_unique_color
+    hue = (track_id * golden_ratio) % 1.0
+           ~~~~~~~~~^~~~~~~~~~~~~~
+TypeError: can't multiply sequence by non-int of type 'float'
+
+2025-06-05 09:36:44,927 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:36:44,927 - src.detection.detector_tracker - DEBUG - Premier élément: ([38.24054718017578, 2.0164718627929688, 37.40772247314453, 21.297290802001953], 0.636051595211029, 'vehicle')
+2025-06-05 09:36:44,927 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:36:44,927 - src.detection.detector_tracker - DEBUG - Contenu bbox: [38.24054718017578, 2.0164718627929688, 37.40772247314453, 21.297290802001953]
+2025-06-05 09:36:44,978 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.234      2.0245      75.682      23.354]
+2025-06-05 09:36:44,978 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.23429496830371
+2025-06-05 09:36:44,978 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:36:44,979 - src.video_processor - ERROR - Erreur traitement frame 4: can't multiply sequence by non-int of type 'float'
+2025-06-05 09:36:44,979 - src.video_processor - ERROR - Traceback: Traceback (most recent call last):
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/video_processor.py", line 207, in _process_single_frame
+    annotated_frame = self.visualizer.render_tracks(frame, all_track_infos)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 129, in render_tracks
+    annotated_frame = self._render_single_track(annotated_frame, track)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 148, in _render_single_track
+    color = self.color_manager.get_track_color(track.id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 40, in get_track_color
+    color = self._generate_unique_color(track_id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 58, in _generate_unique_color
+    hue = (track_id * golden_ratio) % 1.0
+           ~~~~~~~~~^~~~~~~~~~~~~~
+TypeError: can't multiply sequence by non-int of type 'float'
+
+2025-06-05 09:36:45,080 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:36:45,080 - src.detection.detector_tracker - DEBUG - Premier élément: ([37.61888122558594, 2.0806617736816406, 38.969886779785156, 21.74649429321289], 0.6278043985366821, 'vehicle')
+2025-06-05 09:36:45,080 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:36:45,080 - src.detection.detector_tracker - DEBUG - Contenu bbox: [37.61888122558594, 2.0806617736816406, 38.969886779785156, 21.74649429321289]
+2025-06-05 09:36:45,121 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      38.03      2.0741       76.08      23.726]
+2025-06-05 09:36:45,121 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.0297903704776
+2025-06-05 09:36:45,121 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:36:45,121 - src.video_processor - ERROR - Erreur traitement frame 5: can't multiply sequence by non-int of type 'float'
+2025-06-05 09:36:45,122 - src.video_processor - ERROR - Traceback: Traceback (most recent call last):
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/video_processor.py", line 207, in _process_single_frame
+    annotated_frame = self.visualizer.render_tracks(frame, all_track_infos)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 129, in render_tracks
+    annotated_frame = self._render_single_track(annotated_frame, track)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 148, in _render_single_track
+    color = self.color_manager.get_track_color(track.id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 40, in get_track_color
+    color = self._generate_unique_color(track_id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Vehicule-Tracking-Python-Project/src/utils/visualization.py", line 58, in _generate_unique_color
+    hue = (track_id * golden_ratio) % 1.0
+           ~~~~~~~~~^~~~~~~~~~~~~~
+TypeError: can't multiply sequence by non-int of type 'float'
+
+2025-06-05 09:36:45,154 - src.utils.video_capture - INFO - Ressources vidéo libérées pour cars_exemple_footage_short.mp4
+2025-06-05 09:42:17,139 - src.video_processor - INFO - VideoProcessor initialisé: cars_exemple_footage_short.mp4 → output/cars_exemple_footage_short_tracked_20250605_094217.mp4
+2025-06-05 09:42:17,148 - src.utils.video_capture - INFO - Vidéo chargée: cars_exemple_footage_short.mp4
+2025-06-05 09:42:17,148 - src.utils.video_capture - INFO - Métadonnées: 30.21978021978022 FPS, 640x360, 121 frames, 4.00s
+2025-06-05 09:42:17,148 - src.video_processor - INFO - Vidéo chargée: 30.21978021978022 FPS, 640x360
+2025-06-05 09:42:17,283 - src.detection.detector_tracker - INFO - YOLO chargé: yolov8n.pt sur cpu
+2025-06-05 09:42:18,565 - deep_sort_realtime.embedder.embedder_pytorch - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2025-06-05 09:42:18,565 - deep_sort_realtime.embedder.embedder_pytorch - INFO - - gpu enabled: False
+2025-06-05 09:42:18,565 - deep_sort_realtime.embedder.embedder_pytorch - INFO - - half precision: False
+2025-06-05 09:42:18,565 - deep_sort_realtime.embedder.embedder_pytorch - INFO - - max batch size: 16
+2025-06-05 09:42:18,565 - deep_sort_realtime.embedder.embedder_pytorch - INFO - - expects BGR: True
+2025-06-05 09:42:18,651 - deep_sort_realtime.deepsort_tracker - INFO - DeepSort Tracker initialised
+2025-06-05 09:42:18,652 - deep_sort_realtime.deepsort_tracker - INFO - - max age: 30
+2025-06-05 09:42:18,652 - deep_sort_realtime.deepsort_tracker - INFO - - appearance threshold: 0.3
+2025-06-05 09:42:18,652 - deep_sort_realtime.deepsort_tracker - INFO - - nms threshold: OFF
+2025-06-05 09:42:18,652 - deep_sort_realtime.deepsort_tracker - INFO - - max num of appearance features: 100
+2025-06-05 09:42:18,652 - deep_sort_realtime.deepsort_tracker - INFO - - overriding track class : No
+2025-06-05 09:42:18,652 - deep_sort_realtime.deepsort_tracker - INFO - - today given : No
+2025-06-05 09:42:18,652 - deep_sort_realtime.deepsort_tracker - INFO - - in-build embedder : Yes
+2025-06-05 09:42:18,652 - deep_sort_realtime.deepsort_tracker - INFO - - polygon detections : No
+2025-06-05 09:42:18,652 - src.detection.detector_tracker - INFO - DeepSORT initialisé avec les paramètres de config
+2025-06-05 09:42:18,652 - src.detection.detector_tracker - INFO - VehicleDetectorTracker initialisé avec succès
+2025-06-05 09:42:18,652 - src.tracking.track_manager - INFO - TrackManager initialisé
+2025-06-05 09:42:18,652 - src.tracking.trajectory_storage - INFO - TrajectoryStorage initialisé (max_length: 30)
+2025-06-05 09:42:18,652 - src.utils.visualization - INFO - VisualizationRenderer initialisé
+2025-06-05 09:42:18,653 - src.utils.export_manager - INFO - ExportManager initialisé: output/cars_exemple_footage_short_tracked_20250605_094217.mp4
+2025-06-05 09:42:18,653 - src.utils.export_manager - INFO - Utilisation du codec mp4v pour compatibilité
+2025-06-05 09:42:18,654 - src.utils.export_manager - INFO - VideoWriter créé: 30.21978021978022 FPS, 640x360, qualité: 90
+2025-06-05 09:42:18,654 - src.video_processor - INFO - ExportManager initialisé: 30.21978021978022 FPS, 640x360
+2025-06-05 09:42:18,654 - src.video_processor - INFO - Tous les composants initialisés avec succès
+2025-06-05 09:42:18,655 - src.video_processor - INFO - Début du traitement vidéo...
+2025-06-05 09:42:18,841 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:18,841 - src.detection.detector_tracker - DEBUG - Premier élément: ([38.64637756347656, 1.8494558334350586, 36.88233947753906, 21.01039981842041], 0.6141248941421509, 'vehicle')
+2025-06-05 09:42:18,841 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:18,841 - src.detection.detector_tracker - DEBUG - Contenu bbox: [38.64637756347656, 1.8494558334350586, 36.88233947753906, 21.01039981842041]
+2025-06-05 09:42:18,990 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:18,990 - src.detection.detector_tracker - DEBUG - Premier élément: ([38.410316467285156, 1.9608259201049805, 37.35564422607422, 21.173348426818848], 0.653847336769104, 'vehicle')
+2025-06-05 09:42:18,990 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:18,990 - src.detection.detector_tracker - DEBUG - Contenu bbox: [38.410316467285156, 1.9608259201049805, 37.35564422607422, 21.173348426818848]
+2025-06-05 09:42:19,135 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:19,135 - src.detection.detector_tracker - DEBUG - Premier élément: ([38.23115539550781, 2.021728515625, 37.55585479736328, 21.378952026367188], 0.6458252668380737, 'vehicle')
+2025-06-05 09:42:19,135 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:19,135 - src.detection.detector_tracker - DEBUG - Contenu bbox: [38.23115539550781, 2.021728515625, 37.55585479736328, 21.378952026367188]
+2025-06-05 09:42:19,255 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.298        2.01      75.756      23.346]
+2025-06-05 09:42:19,255 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.297673197689356
+2025-06-05 09:42:19,256 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:19,351 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:19,351 - src.detection.detector_tracker - DEBUG - Premier élément: ([38.24054718017578, 2.0164718627929688, 37.40772247314453, 21.297290802001953], 0.636051595211029, 'vehicle')
+2025-06-05 09:42:19,351 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:19,351 - src.detection.detector_tracker - DEBUG - Contenu bbox: [38.24054718017578, 2.0164718627929688, 37.40772247314453, 21.297290802001953]
+2025-06-05 09:42:19,387 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.234      2.0245      75.682      23.354]
+2025-06-05 09:42:19,388 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.23429496830371
+2025-06-05 09:42:19,388 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:19,481 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:19,481 - src.detection.detector_tracker - DEBUG - Premier élément: ([37.61888122558594, 2.0806617736816406, 38.969886779785156, 21.74649429321289], 0.6278043985366821, 'vehicle')
+2025-06-05 09:42:19,481 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:19,481 - src.detection.detector_tracker - DEBUG - Contenu bbox: [37.61888122558594, 2.0806617736816406, 38.969886779785156, 21.74649429321289]
+2025-06-05 09:42:19,519 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      38.03      2.0741       76.08      23.726]
+2025-06-05 09:42:19,519 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.0297903704776
+2025-06-05 09:42:19,519 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:19,614 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:19,614 - src.detection.detector_tracker - DEBUG - Premier élément: ([37.421302795410156, 2.208232879638672, 39.551483154296875, 21.801410675048828], 0.6191612482070923, 'vehicle')
+2025-06-05 09:42:19,614 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:19,614 - src.detection.detector_tracker - DEBUG - Contenu bbox: [37.421302795410156, 2.208232879638672, 39.551483154296875, 21.801410675048828]
+2025-06-05 09:42:19,652 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     37.971      2.1798      76.339      23.976]
+2025-06-05 09:42:19,652 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 37.97081319894873
+2025-06-05 09:42:19,652 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:19,747 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:19,747 - src.detection.detector_tracker - DEBUG - Premier élément: ([38.360435485839844, 2.1353988647460938, 38.670318603515625, 22.05472183227539], 0.6315552592277527, 'vehicle')
+2025-06-05 09:42:19,747 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:19,747 - src.detection.detector_tracker - DEBUG - Contenu bbox: [38.360435485839844, 2.1353988647460938, 38.670318603515625, 22.05472183227539]
+2025-06-05 09:42:19,812 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.163      2.1647      76.911      24.182]
+2025-06-05 09:42:19,812 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.16309422508107
+2025-06-05 09:42:19,813 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:19,905 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:19,905 - src.detection.detector_tracker - DEBUG - Premier élément: ([37.88139343261719, 2.1414031982421875, 39.09033203125, 22.119312286376953], 0.6102668046951294, 'vehicle')
+2025-06-05 09:42:19,905 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:19,905 - src.detection.detector_tracker - DEBUG - Contenu bbox: [37.88139343261719, 2.1414031982421875, 39.09033203125, 22.119312286376953]
+2025-06-05 09:42:19,971 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.007      2.1612      76.973      24.296]
+2025-06-05 09:42:19,971 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.007174937983045
+2025-06-05 09:42:19,971 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:20,067 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:20,067 - src.detection.detector_tracker - DEBUG - Premier élément: ([38.37665557861328, 2.1559371948242188, 38.72002410888672, 21.96041488647461], 0.5988280177116394, 'vehicle')
+2025-06-05 09:42:20,067 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:20,067 - src.detection.detector_tracker - DEBUG - Contenu bbox: [38.37665557861328, 2.1559371948242188, 38.72002410888672, 21.96041488647461]
+2025-06-05 09:42:20,134 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.256       2.168      77.101      24.232]
+2025-06-05 09:42:20,134 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.25592883284045
+2025-06-05 09:42:20,134 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:20,229 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:20,229 - src.detection.detector_tracker - DEBUG - Premier élément: ([340.635986328125, 13.749887466430664, 19.3331298828125, 16.063871383666992], 0.652433454990387, 'vehicle')
+2025-06-05 09:42:20,229 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:20,229 - src.detection.detector_tracker - DEBUG - Contenu bbox: [340.635986328125, 13.749887466430664, 19.3331298828125, 16.063871383666992]
+2025-06-05 09:42:20,295 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.169      2.1129      77.188      24.268]
+2025-06-05 09:42:20,295 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.1690355201482
+2025-06-05 09:42:20,295 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:20,391 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:20,391 - src.detection.detector_tracker - DEBUG - Premier élément: ([340.73773193359375, 13.876672744750977, 19.294677734375, 16.55750846862793], 0.6740959882736206, 'vehicle')
+2025-06-05 09:42:20,391 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:20,391 - src.detection.detector_tracker - DEBUG - Contenu bbox: [340.73773193359375, 13.876672744750977, 19.294677734375, 16.55750846862793]
+2025-06-05 09:42:20,457 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      38.64      2.3796      77.149      24.223]
+2025-06-05 09:42:20,457 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.63961150280505
+2025-06-05 09:42:20,457 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:20,552 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:20,552 - src.detection.detector_tracker - DEBUG - Premier élément: ([341.22015380859375, 14.290718078613281, 18.8843994140625, 16.28857421875], 0.6368023157119751, 'vehicle')
+2025-06-05 09:42:20,552 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:20,552 - src.detection.detector_tracker - DEBUG - Contenu bbox: [341.22015380859375, 14.290718078613281, 18.8843994140625, 16.28857421875]
+2025-06-05 09:42:20,617 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.265      2.2186      76.893      24.123]
+2025-06-05 09:42:20,617 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.26526198745309
+2025-06-05 09:42:20,618 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:20,713 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:20,713 - src.detection.detector_tracker - DEBUG - Premier élément: ([341.161865234375, 14.086883544921875, 19.15283203125, 16.51457977294922], 0.6550818085670471, 'vehicle')
+2025-06-05 09:42:20,713 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:20,713 - src.detection.detector_tracker - DEBUG - Contenu bbox: [341.161865234375, 14.086883544921875, 19.15283203125, 16.51457977294922]
+2025-06-05 09:42:20,777 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.263      2.1252      76.642      23.856]
+2025-06-05 09:42:20,778 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.26307160726169
+2025-06-05 09:42:20,778 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:20,873 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:20,873 - src.detection.detector_tracker - DEBUG - Premier élément: ([341.44598388671875, 14.174266815185547, 18.978271484375, 16.662887573242188], 0.6780199408531189, 'vehicle')
+2025-06-05 09:42:20,873 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:20,873 - src.detection.detector_tracker - DEBUG - Contenu bbox: [341.44598388671875, 14.174266815185547, 18.978271484375, 16.662887573242188]
+2025-06-05 09:42:20,939 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.683       1.979      76.539      23.369]
+2025-06-05 09:42:20,939 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.682978673362584
+2025-06-05 09:42:20,939 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:21,035 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:21,035 - src.detection.detector_tracker - DEBUG - Premier élément: ([341.27569580078125, 14.225685119628906, 19.73388671875, 16.770126342773438], 0.6559141278266907, 'vehicle')
+2025-06-05 09:42:21,035 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:21,035 - src.detection.detector_tracker - DEBUG - Contenu bbox: [341.27569580078125, 14.225685119628906, 19.73388671875, 16.770126342773438]
+2025-06-05 09:42:21,072 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     38.735      1.9682      76.558       23.34]
+2025-06-05 09:42:21,072 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 38.73511199463626
+2025-06-05 09:42:21,072 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:21,168 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:21,168 - src.detection.detector_tracker - DEBUG - Premier élément: ([341.42938232421875, 14.666282653808594, 20.32574462890625, 16.892898559570312], 0.6920697689056396, 'vehicle')
+2025-06-05 09:42:21,169 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:21,169 - src.detection.detector_tracker - DEBUG - Contenu bbox: [341.42938232421875, 14.666282653808594, 20.32574462890625, 16.892898559570312]
+2025-06-05 09:42:21,235 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.121       1.899      76.694      23.073]
+2025-06-05 09:42:21,236 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.12139010381951
+2025-06-05 09:42:21,236 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:21,377 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:21,377 - src.detection.detector_tracker - DEBUG - Premier élément: ([341.12481689453125, 15.021888732910156, 20.65252685546875, 17.133316040039062], 0.6071790456771851, 'vehicle')
+2025-06-05 09:42:21,377 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:21,377 - src.detection.detector_tracker - DEBUG - Contenu bbox: [341.12481689453125, 15.021888732910156, 20.65252685546875, 17.133316040039062]
+2025-06-05 09:42:21,414 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.218      1.8815      76.721      23.017]
+2025-06-05 09:42:21,414 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.217714601086755
+2025-06-05 09:42:21,414 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:21,509 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:21,509 - src.detection.detector_tracker - DEBUG - Premier élément: ([341.0950927734375, 14.52309799194336, 20.7276611328125, 17.933563232421875], 0.554073691368103, 'vehicle')
+2025-06-05 09:42:21,509 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:21,509 - src.detection.detector_tracker - DEBUG - Contenu bbox: [341.0950927734375, 14.52309799194336, 20.7276611328125, 17.933563232421875]
+2025-06-05 09:42:21,546 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.314       1.864      76.749       22.96]
+2025-06-05 09:42:21,546 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.31403910282877
+2025-06-05 09:42:21,546 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:21,641 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:21,641 - src.detection.detector_tracker - DEBUG - Premier élément: ([39.360504150390625, 1.6621780395507812, 38.420562744140625, 21.058879852294922], 0.5490711331367493, 'vehicle')
+2025-06-05 09:42:21,641 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:21,641 - src.detection.detector_tracker - DEBUG - Contenu bbox: [39.360504150390625, 1.6621780395507812, 38.420562744140625, 21.058879852294922]
+2025-06-05 09:42:21,707 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.759      1.6889      77.244      22.748]
+2025-06-05 09:42:21,707 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.7593903781746
+2025-06-05 09:42:21,707 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:21,803 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:21,803 - src.detection.detector_tracker - DEBUG - Premier élément: ([301.1219177246094, 14.897178649902344, 24.08148193359375, 19.71173095703125], 0.7542886137962341, 'vehicle')
+2025-06-05 09:42:21,803 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:21,803 - src.detection.detector_tracker - DEBUG - Contenu bbox: [301.1219177246094, 14.897178649902344, 24.08148193359375, 19.71173095703125]
+2025-06-05 09:42:21,840 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.899      1.6548      77.314      22.675]
+2025-06-05 09:42:21,841 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.89855006227069
+2025-06-05 09:42:21,841 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:21,936 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:21,936 - src.detection.detector_tracker - DEBUG - Premier élément: ([301.82891845703125, 14.76531982421875, 23.152587890625, 20.335433959960938], 0.7476772665977478, 'vehicle')
+2025-06-05 09:42:21,936 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:21,936 - src.detection.detector_tracker - DEBUG - Contenu bbox: [301.82891845703125, 14.76531982421875, 23.152587890625, 20.335433959960938]
+2025-06-05 09:42:22,001 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.048      1.5361      77.434      22.497]
+2025-06-05 09:42:22,001 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.047812934228176
+2025-06-05 09:42:22,001 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:22,096 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:22,096 - src.detection.detector_tracker - DEBUG - Premier élément: ([301.41156005859375, 15.084075927734375, 22.986328125, 20.68902587890625], 0.7307567596435547, 'vehicle')
+2025-06-05 09:42:22,097 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:22,097 - src.detection.detector_tracker - DEBUG - Contenu bbox: [301.41156005859375, 15.084075927734375, 22.986328125, 20.68902587890625]
+2025-06-05 09:42:22,243 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.979      1.5085      77.398      22.431]
+2025-06-05 09:42:22,243 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.97929876978249
+2025-06-05 09:42:22,243 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:22,339 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:22,340 - src.detection.detector_tracker - DEBUG - Premier élément: ([301.21087646484375, 15.304428100585938, 22.9158935546875, 20.826072692871094], 0.7248225212097168, 'vehicle')
+2025-06-05 09:42:22,340 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:22,340 - src.detection.detector_tracker - DEBUG - Contenu bbox: [301.21087646484375, 15.304428100585938, 22.9158935546875, 20.826072692871094]
+2025-06-05 09:42:22,406 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.106      1.4671      77.451      22.349]
+2025-06-05 09:42:22,407 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.10575826265131
+2025-06-05 09:42:22,407 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:22,504 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:22,504 - src.detection.detector_tracker - DEBUG - Premier élément: ([300.6824951171875, 15.826522827148438, 23.4354248046875, 21.135482788085938], 0.696255087852478, 'vehicle')
+2025-06-05 09:42:22,504 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:22,504 - src.detection.detector_tracker - DEBUG - Contenu bbox: [300.6824951171875, 15.826522827148438, 23.4354248046875, 21.135482788085938]
+2025-06-05 09:42:22,542 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.232      1.4258      77.505      22.267]
+2025-06-05 09:42:22,542 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.23221776691836
+2025-06-05 09:42:22,543 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:22,685 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:22,686 - src.detection.detector_tracker - DEBUG - Premier élément: ([300.90985107421875, 15.91653060913086, 22.78515625, 21.508392333984375], 0.7342946529388428, 'vehicle')
+2025-06-05 09:42:22,686 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:22,686 - src.detection.detector_tracker - DEBUG - Contenu bbox: [300.90985107421875, 15.91653060913086, 22.78515625, 21.508392333984375]
+2025-06-05 09:42:22,782 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.864      1.0719      77.781      22.262]
+2025-06-05 09:42:22,782 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.863902400022525
+2025-06-05 09:42:22,782 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:22,925 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:22,925 - src.detection.detector_tracker - DEBUG - Premier élément: ([300.608154296875, 15.992748260498047, 23.2872314453125, 21.86322784423828], 0.730060875415802, 'vehicle')
+2025-06-05 09:42:22,925 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:22,925 - src.detection.detector_tracker - DEBUG - Contenu bbox: [300.608154296875, 15.992748260498047, 23.2872314453125, 21.86322784423828]
+2025-06-05 09:42:22,991 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.549     0.61129      78.014      22.062]
+2025-06-05 09:42:22,991 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.54891970338544
+2025-06-05 09:42:22,991 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:23,087 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:23,087 - src.detection.detector_tracker - DEBUG - Premier élément: ([299.8873596191406, 15.562076568603516, 23.59490966796875, 22.384681701660156], 0.7150564789772034, 'vehicle')
+2025-06-05 09:42:23,087 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:23,087 - src.detection.detector_tracker - DEBUG - Contenu bbox: [299.8873596191406, 15.562076568603516, 23.59490966796875, 22.384681701660156]
+2025-06-05 09:42:23,184 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.097     0.28644      77.969      21.855]
+2025-06-05 09:42:23,184 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.09695392561537
+2025-06-05 09:42:23,184 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:23,327 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:23,327 - src.detection.detector_tracker - DEBUG - Premier élément: ([299.0868835449219, 15.818344116210938, 24.0281982421875, 22.50232696533203], 0.7404079437255859, 'vehicle')
+2025-06-05 09:42:23,328 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:23,328 - src.detection.detector_tracker - DEBUG - Contenu bbox: [299.0868835449219, 15.818344116210938, 24.0281982421875, 22.50232696533203]
+2025-06-05 09:42:23,426 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.268    0.090435       77.73      21.219]
+2025-06-05 09:42:23,426 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.26789386628977
+2025-06-05 09:42:23,426 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:23,569 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:23,569 - src.detection.detector_tracker - DEBUG - Premier élément: ([298.1511535644531, 17.704139709472656, 25.2509765625, 21.43572998046875], 0.6935217976570129, 'vehicle')
+2025-06-05 09:42:23,569 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:23,569 - src.detection.detector_tracker - DEBUG - Contenu bbox: [298.1511535644531, 17.704139709472656, 25.2509765625, 21.43572998046875]
+2025-06-05 09:42:23,665 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.304   -0.052868       77.74      21.061]
+2025-06-05 09:42:23,665 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.30445049352642
+2025-06-05 09:42:23,665 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:23,760 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:23,760 - src.detection.detector_tracker - DEBUG - Premier élément: ([297.54901123046875, 17.770599365234375, 25.9959716796875, 21.935867309570312], 0.7181921601295471, 'vehicle')
+2025-06-05 09:42:23,760 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:23,761 - src.detection.detector_tracker - DEBUG - Contenu bbox: [297.54901123046875, 17.770599365234375, 25.9959716796875, 21.935867309570312]
+2025-06-05 09:42:23,798 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.341    -0.19617       77.75      20.903]
+2025-06-05 09:42:23,799 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.3410071326571
+2025-06-05 09:42:23,799 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:23,802 - src.video_processor - INFO - Frame 30 | Progress: 24.8% | FPS: 5.8 | Tracks: 4/4
+2025-06-05 09:42:23,941 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:23,941 - src.detection.detector_tracker - DEBUG - Premier élément: ([297.28619384765625, 18.920963287353516, 25.9322509765625, 21.415847778320312], 0.7662807106971741, 'vehicle')
+2025-06-05 09:42:23,942 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:23,942 - src.detection.detector_tracker - DEBUG - Contenu bbox: [297.28619384765625, 18.920963287353516, 25.9322509765625, 21.415847778320312]
+2025-06-05 09:42:23,979 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.378    -0.33947       77.76      20.745]
+2025-06-05 09:42:23,979 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.3775637836818
+2025-06-05 09:42:23,980 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:24,124 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:24,124 - src.detection.detector_tracker - DEBUG - Premier élément: ([296.8520812988281, 18.444610595703125, 26.42022705078125, 22.349510192871094], 0.7564480304718018, 'vehicle')
+2025-06-05 09:42:24,124 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:24,124 - src.detection.detector_tracker - DEBUG - Contenu bbox: [296.8520812988281, 18.444610595703125, 26.42022705078125, 22.349510192871094]
+2025-06-05 09:42:24,191 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.414    -0.48278      77.771      20.587]
+2025-06-05 09:42:24,192 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.41412044660054
+2025-06-05 09:42:24,192 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:24,334 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:24,334 - src.detection.detector_tracker - DEBUG - Premier élément: ([296.6884460449219, 18.949371337890625, 26.293701171875, 22.5020751953125], 0.7399494647979736, 'vehicle')
+2025-06-05 09:42:24,335 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:24,335 - src.detection.detector_tracker - DEBUG - Contenu bbox: [296.6884460449219, 18.949371337890625, 26.293701171875, 22.5020751953125]
+2025-06-05 09:42:24,401 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.451    -0.62608      77.781       20.43]
+2025-06-05 09:42:24,401 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.450677121413314
+2025-06-05 09:42:24,401 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:24,497 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:24,497 - src.detection.detector_tracker - DEBUG - Premier élément: ([296.5585632324219, 19.349822998046875, 26.7210693359375, 23.335670471191406], 0.7264957427978516, 'vehicle')
+2025-06-05 09:42:24,497 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:24,497 - src.detection.detector_tracker - DEBUG - Contenu bbox: [296.5585632324219, 19.349822998046875, 26.7210693359375, 23.335670471191406]
+2025-06-05 09:42:24,562 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.487    -0.76938      77.791      20.272]
+2025-06-05 09:42:24,562 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.487233808120116
+2025-06-05 09:42:24,563 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:24,657 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:24,657 - src.detection.detector_tracker - DEBUG - Premier élément: ([341.15875244140625, 21.41867446899414, 25.65283203125, 21.205101013183594], 0.6566479802131653, 'vehicle')
+2025-06-05 09:42:24,657 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:24,657 - src.detection.detector_tracker - DEBUG - Contenu bbox: [341.15875244140625, 21.41867446899414, 25.65283203125, 21.205101013183594]
+2025-06-05 09:42:24,723 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.524    -0.91269      77.801      20.114]
+2025-06-05 09:42:24,723 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.52379050672095
+2025-06-05 09:42:24,723 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:24,817 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:24,817 - src.detection.detector_tracker - DEBUG - Premier élément: ([341.4222717285156, 22.347328186035156, 25.13299560546875, 21.162857055664062], 0.6692854762077332, 'vehicle')
+2025-06-05 09:42:24,817 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:24,817 - src.detection.detector_tracker - DEBUG - Contenu bbox: [341.4222717285156, 22.347328186035156, 25.13299560546875, 21.162857055664062]
+2025-06-05 09:42:24,881 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      39.56      -1.056      77.811      19.956]
+2025-06-05 09:42:24,881 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.56034721721582
+2025-06-05 09:42:24,882 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:24,978 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:24,978 - src.detection.detector_tracker - DEBUG - Premier élément: ([296.13348388671875, 21.312458038330078, 26.0682373046875, 24.02074432373047], 0.7196511626243591, 'vehicle')
+2025-06-05 09:42:24,978 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:24,978 - src.detection.detector_tracker - DEBUG - Contenu bbox: [296.13348388671875, 21.312458038330078, 26.0682373046875, 24.02074432373047]
+2025-06-05 09:42:25,043 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.597     -1.1993      77.821      19.798]
+2025-06-05 09:42:25,043 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.596903939604715
+2025-06-05 09:42:25,043 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:25,139 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:25,139 - src.detection.detector_tracker - DEBUG - Premier élément: ([341.94683837890625, 23.92926025390625, 24.41876220703125, 20.645095825195312], 0.6981170773506165, 'vehicle')
+2025-06-05 09:42:25,139 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:25,139 - src.detection.detector_tracker - DEBUG - Contenu bbox: [341.94683837890625, 23.92926025390625, 24.41876220703125, 20.645095825195312]
+2025-06-05 09:42:25,205 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.633     -1.3426      77.831       19.64]
+2025-06-05 09:42:25,206 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.63346067388764
+2025-06-05 09:42:25,206 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:25,301 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:25,301 - src.detection.detector_tracker - DEBUG - Premier élément: ([296.15985107421875, 22.96025848388672, 25.277587890625, 23.677459716796875], 0.760380208492279, 'vehicle')
+2025-06-05 09:42:25,301 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:25,301 - src.detection.detector_tracker - DEBUG - Contenu bbox: [296.15985107421875, 22.96025848388672, 25.277587890625, 23.677459716796875]
+2025-06-05 09:42:25,366 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      39.67     -1.4859      77.841      19.483]
+2025-06-05 09:42:25,366 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.67001742006461
+2025-06-05 09:42:25,366 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:25,461 - src.detection.detector_tracker - DEBUG - Détections trouvées: 1
+2025-06-05 09:42:25,461 - src.detection.detector_tracker - DEBUG - Premier élément: ([293.90167236328125, 22.96942901611328, 27.094970703125, 24.270782470703125], 0.6950140595436096, 'vehicle')
+2025-06-05 09:42:25,461 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:25,461 - src.detection.detector_tracker - DEBUG - Contenu bbox: [293.90167236328125, 22.96942901611328, 27.094970703125, 24.270782470703125]
+2025-06-05 09:42:25,499 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.707     -1.6292      77.852      19.325]
+2025-06-05 09:42:25,499 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.7065741781356
+2025-06-05 09:42:25,499 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:25,594 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:25,594 - src.detection.detector_tracker - DEBUG - Premier élément: ([294.5283203125, 23.241592407226562, 26.30419921875, 25.238113403320312], 0.6874948143959045, 'vehicle')
+2025-06-05 09:42:25,594 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:25,594 - src.detection.detector_tracker - DEBUG - Contenu bbox: [294.5283203125, 23.241592407226562, 26.30419921875, 25.238113403320312]
+2025-06-05 09:42:25,659 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.743     -1.7725      77.862      19.167]
+2025-06-05 09:42:25,659 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.74313094810063
+2025-06-05 09:42:25,659 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:25,755 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:25,755 - src.detection.detector_tracker - DEBUG - Premier élément: ([292.7027587890625, 23.774456024169922, 27.52099609375, 25.766265869140625], 0.7522604465484619, 'vehicle')
+2025-06-05 09:42:25,755 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:25,755 - src.detection.detector_tracker - DEBUG - Contenu bbox: [292.7027587890625, 23.774456024169922, 27.52099609375, 25.766265869140625]
+2025-06-05 09:42:25,820 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      39.78     -1.9158      77.872      19.009]
+2025-06-05 09:42:25,820 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.77968772995968
+2025-06-05 09:42:25,821 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:25,916 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:25,916 - src.detection.detector_tracker - DEBUG - Premier élément: ([294.13116455078125, 24.513450622558594, 25.87152099609375, 25.991653442382812], 0.7445544004440308, 'vehicle')
+2025-06-05 09:42:25,916 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:25,916 - src.detection.detector_tracker - DEBUG - Contenu bbox: [294.13116455078125, 24.513450622558594, 25.87152099609375, 25.991653442382812]
+2025-06-05 09:42:25,984 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.816     -2.0591      77.882      18.851]
+2025-06-05 09:42:25,984 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.81624452371277
+2025-06-05 09:42:25,984 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:26,081 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:26,082 - src.detection.detector_tracker - DEBUG - Premier élément: ([293.9637756347656, 25.2276611328125, 26.26226806640625, 25.7296142578125], 0.8048313856124878, 'vehicle')
+2025-06-05 09:42:26,082 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:26,082 - src.detection.detector_tracker - DEBUG - Contenu bbox: [293.9637756347656, 25.2276611328125, 26.26226806640625, 25.7296142578125]
+2025-06-05 09:42:26,149 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.853     -2.2024      77.892      18.693]
+2025-06-05 09:42:26,149 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.85280132935989
+2025-06-05 09:42:26,149 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:26,247 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:26,248 - src.detection.detector_tracker - DEBUG - Premier élément: ([293.5213623046875, 25.464340209960938, 26.7938232421875, 27.11297607421875], 0.8133746981620789, 'vehicle')
+2025-06-05 09:42:26,248 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:26,248 - src.detection.detector_tracker - DEBUG - Contenu bbox: [293.5213623046875, 25.464340209960938, 26.7938232421875, 27.11297607421875]
+2025-06-05 09:42:26,315 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.889     -2.3457      77.902      18.536]
+2025-06-05 09:42:26,315 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.889358146901046
+2025-06-05 09:42:26,315 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:26,411 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:26,412 - src.detection.detector_tracker - DEBUG - Premier élément: ([293.0794677734375, 25.800872802734375, 26.935791015625, 28.33612823486328], 0.7837063670158386, 'vehicle')
+2025-06-05 09:42:26,412 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:26,412 - src.detection.detector_tracker - DEBUG - Contenu bbox: [293.0794677734375, 25.800872802734375, 26.935791015625, 28.33612823486328]
+2025-06-05 09:42:26,478 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.926      -2.489      77.912      18.378]
+2025-06-05 09:42:26,478 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.92591497633623
+2025-06-05 09:42:26,479 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:26,574 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:26,574 - src.detection.detector_tracker - DEBUG - Premier élément: ([341.8062744140625, 29.281524658203125, 26.9007568359375, 23.622215270996094], 0.7775914072990417, 'vehicle')
+2025-06-05 09:42:26,574 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:26,574 - src.detection.detector_tracker - DEBUG - Contenu bbox: [341.8062744140625, 29.281524658203125, 26.9007568359375, 23.622215270996094]
+2025-06-05 09:42:26,639 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.962     -2.6323      77.923       18.22]
+2025-06-05 09:42:26,639 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.962471817665445
+2025-06-05 09:42:26,639 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:26,732 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:26,732 - src.detection.detector_tracker - DEBUG - Premier élément: ([288.20733642578125, 28.094680786132812, 31.1087646484375, 28.505844116210938], 0.7277870774269104, 'vehicle')
+2025-06-05 09:42:26,732 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:26,732 - src.detection.detector_tracker - DEBUG - Contenu bbox: [288.20733642578125, 28.094680786132812, 31.1087646484375, 28.505844116210938]
+2025-06-05 09:42:26,798 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.999     -2.7756      77.933      18.062]
+2025-06-05 09:42:26,798 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.99902867088869
+2025-06-05 09:42:26,798 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:26,892 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:26,893 - src.detection.detector_tracker - DEBUG - Premier élément: ([342.5701904296875, 31.584487915039062, 27.13214111328125, 22.638275146484375], 0.7382575273513794, 'vehicle')
+2025-06-05 09:42:26,893 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:26,893 - src.detection.detector_tracker - DEBUG - Contenu bbox: [342.5701904296875, 31.584487915039062, 27.13214111328125, 22.638275146484375]
+2025-06-05 09:42:26,958 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.036     -2.9189      77.943      17.904]
+2025-06-05 09:42:26,958 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.035585536005975
+2025-06-05 09:42:26,958 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:27,053 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:27,053 - src.detection.detector_tracker - DEBUG - Premier élément: ([343.03094482421875, 31.584136962890625, 26.6619873046875, 24.038345336914062], 0.7743128538131714, 'vehicle')
+2025-06-05 09:42:27,053 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:27,053 - src.detection.detector_tracker - DEBUG - Contenu bbox: [343.03094482421875, 31.584136962890625, 26.6619873046875, 24.038345336914062]
+2025-06-05 09:42:27,119 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.072     -3.0622      77.953      17.746]
+2025-06-05 09:42:27,119 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.07214241301729
+2025-06-05 09:42:27,119 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:27,213 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:27,214 - src.detection.detector_tracker - DEBUG - Premier élément: ([342.7938537597656, 31.186744689941406, 28.14349365234375, 26.067466735839844], 0.7483952045440674, 'vehicle')
+2025-06-05 09:42:27,214 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:27,214 - src.detection.detector_tracker - DEBUG - Contenu bbox: [342.7938537597656, 31.186744689941406, 28.14349365234375, 26.067466735839844]
+2025-06-05 09:42:27,279 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.109     -3.2055      77.963      17.589]
+2025-06-05 09:42:27,279 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.10869930192263
+2025-06-05 09:42:27,279 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:27,374 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:27,374 - src.detection.detector_tracker - DEBUG - Premier élément: ([288.1334228515625, 32.02588653564453, 30.5771484375, 28.990463256835938], 0.6957845091819763, 'vehicle')
+2025-06-05 09:42:27,374 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:27,374 - src.detection.detector_tracker - DEBUG - Contenu bbox: [288.1334228515625, 32.02588653564453, 30.5771484375, 28.990463256835938]
+2025-06-05 09:42:27,440 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.145     -3.3488      77.973      17.431]
+2025-06-05 09:42:27,441 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.145256202722
+2025-06-05 09:42:27,441 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:27,535 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:27,536 - src.detection.detector_tracker - DEBUG - Premier élément: ([287.6001892089844, 33.34864807128906, 31.38702392578125, 29.57904815673828], 0.7407658100128174, 'vehicle')
+2025-06-05 09:42:27,536 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:27,536 - src.detection.detector_tracker - DEBUG - Contenu bbox: [287.6001892089844, 33.34864807128906, 31.38702392578125, 29.57904815673828]
+2025-06-05 09:42:27,631 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     41.132     0.13921      77.905      19.789]
+2025-06-05 09:42:27,631 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 41.13218972735527
+2025-06-05 09:42:27,631 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:27,726 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:27,726 - src.detection.detector_tracker - DEBUG - Premier élément: ([288.05450439453125, 33.962188720703125, 30.6727294921875, 30.381149291992188], 0.7498314380645752, 'vehicle')
+2025-06-05 09:42:27,726 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:27,726 - src.detection.detector_tracker - DEBUG - Contenu bbox: [288.05450439453125, 33.962188720703125, 30.6727294921875, 30.381149291992188]
+2025-06-05 09:42:27,820 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.823     0.14164      78.699      20.095]
+2025-06-05 09:42:27,821 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.82264828340055
+2025-06-05 09:42:27,821 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:27,917 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:27,917 - src.detection.detector_tracker - DEBUG - Premier élément: ([342.14208984375, 35.55304718017578, 29.2742919921875, 27.619422912597656], 0.7466556429862976, 'vehicle')
+2025-06-05 09:42:27,917 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:27,917 - src.detection.detector_tracker - DEBUG - Contenu bbox: [342.14208984375, 35.55304718017578, 29.2742919921875, 27.619422912597656]
+2025-06-05 09:42:28,011 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.835     0.13546      78.893      19.965]
+2025-06-05 09:42:28,011 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.835080202177394
+2025-06-05 09:42:28,012 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:28,106 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:28,106 - src.detection.detector_tracker - DEBUG - Premier élément: ([343.14532470703125, 36.915130615234375, 28.7239990234375, 26.885162353515625], 0.8178880214691162, 'vehicle')
+2025-06-05 09:42:28,106 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:28,106 - src.detection.detector_tracker - DEBUG - Contenu bbox: [343.14532470703125, 36.915130615234375, 28.7239990234375, 26.885162353515625]
+2025-06-05 09:42:28,172 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.939     0.14384      78.925      19.936]
+2025-06-05 09:42:28,173 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.93872408287684
+2025-06-05 09:42:28,173 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:28,268 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:28,268 - src.detection.detector_tracker - DEBUG - Premier élément: ([343.24334716796875, 37.40093231201172, 29.27978515625, 28.09331512451172], 0.8499084115028381, 'vehicle')
+2025-06-05 09:42:28,268 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:28,268 - src.detection.detector_tracker - DEBUG - Contenu bbox: [343.24334716796875, 37.40093231201172, 29.27978515625, 28.09331512451172]
+2025-06-05 09:42:28,334 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     41.042     0.15223      78.957      19.908]
+2025-06-05 09:42:28,334 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 41.04236811732835
+2025-06-05 09:42:28,334 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:28,430 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:28,430 - src.detection.detector_tracker - DEBUG - Premier élément: ([343.2686767578125, 38.2578010559082, 29.52362060546875, 28.35116195678711], 0.8233590722084045, 'vehicle')
+2025-06-05 09:42:28,430 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:28,430 - src.detection.detector_tracker - DEBUG - Contenu bbox: [343.2686767578125, 38.2578010559082, 29.52362060546875, 28.35116195678711]
+2025-06-05 09:42:28,529 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.668     0.15911      78.931      19.988]
+2025-06-05 09:42:28,529 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.668013215429326
+2025-06-05 09:42:28,529 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:28,624 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:28,624 - src.detection.detector_tracker - DEBUG - Premier élément: ([343.176025390625, 39.52003479003906, 30.42236328125, 28.549453735351562], 0.7691735029220581, 'vehicle')
+2025-06-05 09:42:28,624 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:28,624 - src.detection.detector_tracker - DEBUG - Contenu bbox: [343.176025390625, 39.52003479003906, 30.42236328125, 28.549453735351562]
+2025-06-05 09:42:28,691 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.728     0.16732      78.944      19.972]
+2025-06-05 09:42:28,691 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.72774912137622
+2025-06-05 09:42:28,692 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:28,790 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:28,791 - src.detection.detector_tracker - DEBUG - Premier élément: ([343.33428955078125, 41.37174987792969, 30.990234375, 29.0384521484375], 0.824417769908905, 'vehicle')
+2025-06-05 09:42:28,791 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:28,791 - src.detection.detector_tracker - DEBUG - Contenu bbox: [343.33428955078125, 41.37174987792969, 30.990234375, 29.0384521484375]
+2025-06-05 09:42:28,861 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.787     0.17553      78.957      19.956]
+2025-06-05 09:42:28,861 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.787485136666675
+2025-06-05 09:42:28,862 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:28,864 - src.video_processor - INFO - Frame 60 | Progress: 49.6% | FPS: 5.9 | Tracks: 3/3
+2025-06-05 09:42:28,959 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:28,960 - src.detection.detector_tracker - DEBUG - Premier élément: ([343.10430908203125, 42.52251052856445, 31.5321044921875, 28.674251556396484], 0.81343013048172, 'vehicle')
+2025-06-05 09:42:28,960 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:28,960 - src.detection.detector_tracker - DEBUG - Contenu bbox: [343.10430908203125, 42.52251052856445, 31.5321044921875, 28.674251556396484]
+2025-06-05 09:42:29,059 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.847     0.18374      78.971       19.94]
+2025-06-05 09:42:29,060 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.84722126130067
+2025-06-05 09:42:29,060 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:29,199 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:29,199 - src.detection.detector_tracker - DEBUG - Premier élément: ([342.2137756347656, 43.81553649902344, 33.12213134765625, 30.019287109375], 0.8072043657302856, 'vehicle')
+2025-06-05 09:42:29,199 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:29,199 - src.detection.detector_tracker - DEBUG - Contenu bbox: [342.2137756347656, 43.81553649902344, 33.12213134765625, 30.019287109375]
+2025-06-05 09:42:29,266 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.907     0.19194      78.984      19.924]
+2025-06-05 09:42:29,267 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.90695749527821
+2025-06-05 09:42:29,267 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:29,366 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:29,367 - src.detection.detector_tracker - DEBUG - Premier élément: ([279.05145263671875, 44.11933517456055, 37.71490478515625, 35.776676177978516], 0.7925766706466675, 'vehicle')
+2025-06-05 09:42:29,367 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:29,368 - src.detection.detector_tracker - DEBUG - Contenu bbox: [279.05145263671875, 44.11933517456055, 37.71490478515625, 35.776676177978516]
+2025-06-05 09:42:29,437 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.967     0.20015      78.997      19.908]
+2025-06-05 09:42:29,438 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.96669383859931
+2025-06-05 09:42:29,438 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:29,536 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:29,537 - src.detection.detector_tracker - DEBUG - Premier élément: ([277.624267578125, 46.232635498046875, 39.0601806640625, 36.77500915527344], 0.8183188438415527, 'vehicle')
+2025-06-05 09:42:29,537 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:29,537 - src.detection.detector_tracker - DEBUG - Contenu bbox: [277.624267578125, 46.232635498046875, 39.0601806640625, 36.77500915527344]
+2025-06-05 09:42:29,604 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     41.026     0.20836       79.01      19.893]
+2025-06-05 09:42:29,605 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 41.02643029126395
+2025-06-05 09:42:29,606 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:29,704 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:29,704 - src.detection.detector_tracker - DEBUG - Premier élément: ([276.77435302734375, 47.58180236816406, 39.247314453125, 36.9681396484375], 0.7798877954483032, 'vehicle')
+2025-06-05 09:42:29,705 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:29,705 - src.detection.detector_tracker - DEBUG - Contenu bbox: [276.77435302734375, 47.58180236816406, 39.247314453125, 36.9681396484375]
+2025-06-05 09:42:29,777 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     41.086     0.21657      79.024      19.877]
+2025-06-05 09:42:29,778 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 41.08616685327215
+2025-06-05 09:42:29,779 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:29,899 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:29,900 - src.detection.detector_tracker - DEBUG - Premier élément: ([275.26409912109375, 48.60981369018555, 40.4783935546875, 37.54465103149414], 0.8023122549057007, 'vehicle')
+2025-06-05 09:42:29,900 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:29,901 - src.detection.detector_tracker - DEBUG - Contenu bbox: [275.26409912109375, 48.60981369018555, 40.4783935546875, 37.54465103149414]
+2025-06-05 09:42:29,982 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     41.146     0.22478      79.037      19.861]
+2025-06-05 09:42:29,982 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 41.14590352462389
+2025-06-05 09:42:29,982 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:30,086 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:30,086 - src.detection.detector_tracker - DEBUG - Premier élément: ([342.711181640625, 50.22123336791992, 35.203857421875, 32.809696197509766], 0.7897125482559204, 'vehicle')
+2025-06-05 09:42:30,086 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:30,086 - src.detection.detector_tracker - DEBUG - Contenu bbox: [342.711181640625, 50.22123336791992, 35.203857421875, 32.809696197509766]
+2025-06-05 09:42:30,199 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     41.206     0.23299       79.05      19.845]
+2025-06-05 09:42:30,200 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 41.20564030531919
+2025-06-05 09:42:30,200 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:30,329 - src.detection.detector_tracker - DEBUG - Détections trouvées: 2
+2025-06-05 09:42:30,329 - src.detection.detector_tracker - DEBUG - Premier élément: ([343.8741149902344, 50.896934509277344, 34.14300537109375, 33.054779052734375], 0.8073939085006714, 'vehicle')
+2025-06-05 09:42:30,330 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:30,330 - src.detection.detector_tracker - DEBUG - Contenu bbox: [343.8741149902344, 50.896934509277344, 34.14300537109375, 33.054779052734375]
+2025-06-05 09:42:30,397 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     41.265      0.2412      79.063      19.829]
+2025-06-05 09:42:30,398 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 41.265377195358035
+2025-06-05 09:42:30,398 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:30,494 - src.detection.detector_tracker - DEBUG - Détections trouvées: 3
+2025-06-05 09:42:30,495 - src.detection.detector_tracker - DEBUG - Premier élément: ([343.04052734375, 52.722869873046875, 35.6761474609375, 34.13641357421875], 0.833613932132721, 'vehicle')
+2025-06-05 09:42:30,495 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:30,495 - src.detection.detector_tracker - DEBUG - Contenu bbox: [343.04052734375, 52.722869873046875, 35.6761474609375, 34.13641357421875]
+2025-06-05 09:42:30,597 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     41.325     0.24941      79.076      19.813]
+2025-06-05 09:42:30,598 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 41.32511419474042
+2025-06-05 09:42:30,599 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:30,800 - src.detection.detector_tracker - DEBUG - Détections trouvées: 4
+2025-06-05 09:42:30,800 - src.detection.detector_tracker - DEBUG - Premier élément: ([343.8564147949219, 54.81745910644531, 35.65625, 34.651947021484375], 0.8246267437934875, 'vehicle')
+2025-06-05 09:42:30,800 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:30,800 - src.detection.detector_tracker - DEBUG - Contenu bbox: [343.8564147949219, 54.81745910644531, 35.65625, 34.651947021484375]
+2025-06-05 09:42:31,041 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.681     0.43773      80.723      21.988]
+2025-06-05 09:42:31,042 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.68081432594664
+2025-06-05 09:42:31,042 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:31,196 - src.detection.detector_tracker - DEBUG - Détections trouvées: 4
+2025-06-05 09:42:31,197 - src.detection.detector_tracker - DEBUG - Premier élément: ([344.54241943359375, 56.21940612792969, 35.549072265625, 35.26347351074219], 0.8090341091156006, 'vehicle')
+2025-06-05 09:42:31,197 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:31,197 - src.detection.detector_tracker - DEBUG - Contenu bbox: [344.54241943359375, 56.21940612792969, 35.549072265625, 35.26347351074219]
+2025-06-05 09:42:31,372 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     39.953     0.49389       80.75      22.124]
+2025-06-05 09:42:31,372 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.95312452222709
+2025-06-05 09:42:31,372 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:31,578 - src.detection.detector_tracker - DEBUG - Détections trouvées: 4
+2025-06-05 09:42:31,579 - src.detection.detector_tracker - DEBUG - Premier élément: ([271.27545166015625, 59.220603942871094, 41.8497314453125, 41.33900451660156], 0.7903003096580505, 'vehicle')
+2025-06-05 09:42:31,579 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:31,579 - src.detection.detector_tracker - DEBUG - Contenu bbox: [271.27545166015625, 59.220603942871094, 41.8497314453125, 41.33900451660156]
+2025-06-05 09:42:31,791 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      39.92      0.4843      80.495       22.09]
+2025-06-05 09:42:31,791 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 39.919687131907295
+2025-06-05 09:42:31,792 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:31,957 - src.detection.detector_tracker - DEBUG - Détections trouvées: 5
+2025-06-05 09:42:31,957 - src.detection.detector_tracker - DEBUG - Premier élément: ([271.10479736328125, 60.75758361816406, 41.55731201171875, 41.73004150390625], 0.8329665064811707, 'vehicle')
+2025-06-05 09:42:31,957 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:31,957 - src.detection.detector_tracker - DEBUG - Contenu bbox: [271.10479736328125, 60.75758361816406, 41.55731201171875, 41.73004150390625]
+2025-06-05 09:42:32,280 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.499     0.46903      80.457      21.863]
+2025-06-05 09:42:32,280 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.49924750151703
+2025-06-05 09:42:32,281 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:32,430 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:32,430 - src.detection.detector_tracker - DEBUG - Premier élément: ([399.6610107421875, 37.16996765136719, 39.3624267578125, 33.240570068359375], 0.8110985159873962, 'vehicle')
+2025-06-05 09:42:32,430 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:32,431 - src.detection.detector_tracker - DEBUG - Contenu bbox: [399.6610107421875, 37.16996765136719, 39.3624267578125, 33.240570068359375]
+2025-06-05 09:42:32,692 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.492     0.48548      80.566      21.942]
+2025-06-05 09:42:32,692 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.49194710547332
+2025-06-05 09:42:32,692 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:32,786 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:32,786 - src.detection.detector_tracker - DEBUG - Premier élément: ([345.3329772949219, 62.275047302246094, 38.21221923828125, 37.868438720703125], 0.829166829586029, 'vehicle')
+2025-06-05 09:42:32,786 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:32,786 - src.detection.detector_tracker - DEBUG - Contenu bbox: [345.3329772949219, 62.275047302246094, 38.21221923828125, 37.868438720703125]
+2025-06-05 09:42:32,970 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.485     0.50193      80.676      22.021]
+2025-06-05 09:42:32,970 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.484646616776345
+2025-06-05 09:42:32,971 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:33,065 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:33,065 - src.detection.detector_tracker - DEBUG - Premier élément: ([345.82293701171875, 64.15957641601562, 38.2098388671875, 37.615264892578125], 0.7970520853996277, 'vehicle')
+2025-06-05 09:42:33,065 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:33,065 - src.detection.detector_tracker - DEBUG - Contenu bbox: [345.82293701171875, 64.15957641601562, 38.2098388671875, 37.615264892578125]
+2025-06-05 09:42:33,249 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.477     0.51839      80.785      22.099]
+2025-06-05 09:42:33,250 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.477346035426116
+2025-06-05 09:42:33,250 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:33,345 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:33,345 - src.detection.detector_tracker - DEBUG - Premier élément: ([263.4342041015625, 67.19975280761719, 48.054931640625, 48.834564208984375], 0.780319094657898, 'vehicle')
+2025-06-05 09:42:33,345 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:33,346 - src.detection.detector_tracker - DEBUG - Contenu bbox: [263.4342041015625, 67.19975280761719, 48.054931640625, 48.834564208984375]
+2025-06-05 09:42:33,533 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      40.47     0.53484      80.894      22.178]
+2025-06-05 09:42:33,533 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.47004536142262
+2025-06-05 09:42:33,533 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:33,629 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:33,629 - src.detection.detector_tracker - DEBUG - Premier élément: ([262.6397705078125, 70.02099609375, 48.68017578125, 48.34637451171875], 0.7880903482437134, 'vehicle')
+2025-06-05 09:42:33,629 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:33,629 - src.detection.detector_tracker - DEBUG - Contenu bbox: [262.6397705078125, 70.02099609375, 48.68017578125, 48.34637451171875]
+2025-06-05 09:42:33,815 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.463     0.55129      81.004      22.257]
+2025-06-05 09:42:33,815 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.462744594765866
+2025-06-05 09:42:33,815 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:33,958 - src.detection.detector_tracker - DEBUG - Détections trouvées: 5
+2025-06-05 09:42:33,958 - src.detection.detector_tracker - DEBUG - Premier élément: ([345.801513671875, 68.41232299804688, 41.23370361328125, 41.78965759277344], 0.7695832252502441, 'vehicle')
+2025-06-05 09:42:33,958 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:33,958 - src.detection.detector_tracker - DEBUG - Contenu bbox: [345.801513671875, 68.41232299804688, 41.23370361328125, 41.78965759277344]
+2025-06-05 09:42:34,113 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.455     0.56775      81.113      22.336]
+2025-06-05 09:42:34,113 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.45544373545586
+2025-06-05 09:42:34,114 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:34,210 - src.detection.detector_tracker - DEBUG - Détections trouvées: 5
+2025-06-05 09:42:34,210 - src.detection.detector_tracker - DEBUG - Premier élément: ([405.1771240234375, 44.30012512207031, 42.8555908203125, 36.53538513183594], 0.7984805107116699, 'vehicle')
+2025-06-05 09:42:34,210 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:34,210 - src.detection.detector_tracker - DEBUG - Contenu bbox: [405.1771240234375, 44.30012512207031, 42.8555908203125, 36.53538513183594]
+2025-06-05 09:42:34,367 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.448      0.5842      81.222      22.415]
+2025-06-05 09:42:34,367 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.448142783492585
+2025-06-05 09:42:34,368 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:34,461 - src.detection.detector_tracker - DEBUG - Détections trouvées: 5
+2025-06-05 09:42:34,461 - src.detection.detector_tracker - DEBUG - Premier élément: ([406.52044677734375, 44.11932373046875, 43.6405029296875, 38.57563781738281], 0.8243368268013, 'vehicle')
+2025-06-05 09:42:34,461 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:34,461 - src.detection.detector_tracker - DEBUG - Contenu bbox: [406.52044677734375, 44.11932373046875, 43.6405029296875, 38.57563781738281]
+2025-06-05 09:42:34,614 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.441     0.60065      81.332      22.494]
+2025-06-05 09:42:34,614 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.440841738876045
+2025-06-05 09:42:34,614 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:34,709 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:34,709 - src.detection.detector_tracker - DEBUG - Premier élément: ([408.0721740722656, 47.03541564941406, 43.9547119140625, 38.084808349609375], 0.7928242683410645, 'vehicle')
+2025-06-05 09:42:34,709 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:34,709 - src.detection.detector_tracker - DEBUG - Contenu bbox: [408.0721740722656, 47.03541564941406, 43.9547119140625, 38.084808349609375]
+2025-06-05 09:42:34,904 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.578     0.35313       80.48      21.819]
+2025-06-05 09:42:34,905 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.578424436317846
+2025-06-05 09:42:34,905 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:35,047 - src.detection.detector_tracker - DEBUG - Détections trouvées: 5
+2025-06-05 09:42:35,047 - src.detection.detector_tracker - DEBUG - Premier élément: ([346.39093017578125, 77.82914733886719, 44.4525146484375, 45.265899658203125], 0.7824932932853699, 'vehicle')
+2025-06-05 09:42:35,048 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:35,048 - src.detection.detector_tracker - DEBUG - Contenu bbox: [346.39093017578125, 77.82914733886719, 44.4525146484375, 45.265899658203125]
+2025-06-05 09:42:35,207 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.575     0.35013      80.526      21.842]
+2025-06-05 09:42:35,207 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.574876294392155
+2025-06-05 09:42:35,208 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:35,305 - src.detection.detector_tracker - DEBUG - Détections trouvées: 5
+2025-06-05 09:42:35,305 - src.detection.detector_tracker - DEBUG - Premier élément: ([346.78021240234375, 80.36296081542969, 44.93359375, 46.42994689941406], 0.775226354598999, 'vehicle')
+2025-06-05 09:42:35,305 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:35,305 - src.detection.detector_tracker - DEBUG - Contenu bbox: [346.78021240234375, 80.36296081542969, 44.93359375, 46.42994689941406]
+2025-06-05 09:42:35,462 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.571     0.34712      80.571      21.866]
+2025-06-05 09:42:35,462 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.57132812764801
+2025-06-05 09:42:35,463 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:35,559 - src.detection.detector_tracker - DEBUG - Détections trouvées: 5
+2025-06-05 09:42:35,559 - src.detection.detector_tracker - DEBUG - Premier élément: ([347.5247802734375, 82.13742065429688, 45.8184814453125, 48.3787841796875], 0.730792760848999, 'vehicle')
+2025-06-05 09:42:35,560 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:35,560 - src.detection.detector_tracker - DEBUG - Contenu bbox: [347.5247802734375, 82.13742065429688, 45.8184814453125, 48.3787841796875]
+2025-06-05 09:42:35,717 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.568     0.34411      80.616      21.889]
+2025-06-05 09:42:35,718 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.5677799360854
+2025-06-05 09:42:35,718 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:35,816 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:35,816 - src.detection.detector_tracker - DEBUG - Premier élément: ([347.5048522949219, 84.22283935546875, 47.82403564453125, 49.30328369140625], 0.7345485687255859, 'vehicle')
+2025-06-05 09:42:35,816 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:35,816 - src.detection.detector_tracker - DEBUG - Contenu bbox: [347.5048522949219, 84.22283935546875, 47.82403564453125, 49.30328369140625]
+2025-06-05 09:42:36,005 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.564     0.34111      80.662      21.912]
+2025-06-05 09:42:36,005 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.564231719704345
+2025-06-05 09:42:36,005 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:36,147 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:36,147 - src.detection.detector_tracker - DEBUG - Premier élément: ([246.77423095703125, 91.81195068359375, 58.7899169921875, 62.33154296875], 0.7280317544937134, 'vehicle')
+2025-06-05 09:42:36,147 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:36,147 - src.detection.detector_tracker - DEBUG - Contenu bbox: [246.77423095703125, 91.81195068359375, 58.7899169921875, 62.33154296875]
+2025-06-05 09:42:36,336 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.561      0.3381      80.707      21.936]
+2025-06-05 09:42:36,336 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.56068347850483
+2025-06-05 09:42:36,337 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:36,432 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:36,432 - src.detection.detector_tracker - DEBUG - Premier élément: ([415.1151123046875, 55.73553466796875, 49.49560546875, 42.72955322265625], 0.6950055956840515, 'vehicle')
+2025-06-05 09:42:36,432 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:36,432 - src.detection.detector_tracker - DEBUG - Contenu bbox: [415.1151123046875, 55.73553466796875, 49.49560546875, 42.72955322265625]
+2025-06-05 09:42:36,616 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.557     0.33509      80.753      21.959]
+2025-06-05 09:42:36,616 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.557135212486855
+2025-06-05 09:42:36,616 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:36,710 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:36,710 - src.detection.detector_tracker - DEBUG - Premier élément: ([347.7446594238281, 93.87283325195312, 52.50885009765625, 52.414398193359375], 0.6812090277671814, 'vehicle')
+2025-06-05 09:42:36,710 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:36,710 - src.detection.detector_tracker - DEBUG - Contenu bbox: [347.7446594238281, 93.87283325195312, 52.50885009765625, 52.414398193359375]
+2025-06-05 09:42:36,892 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.554     0.33209      80.798      21.982]
+2025-06-05 09:42:36,892 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.55358692165043
+2025-06-05 09:42:36,893 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:36,987 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:36,987 - src.detection.detector_tracker - DEBUG - Premier élément: ([347.80169677734375, 95.77171325683594, 53.7081298828125, 56.294097900390625], 0.752094030380249, 'vehicle')
+2025-06-05 09:42:36,988 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:36,988 - src.detection.detector_tracker - DEBUG - Contenu bbox: [347.80169677734375, 95.77171325683594, 53.7081298828125, 56.294097900390625]
+2025-06-05 09:42:37,172 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      40.55     0.32908      80.843      22.006]
+2025-06-05 09:42:37,173 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.55003860599554
+2025-06-05 09:42:37,173 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:37,175 - src.video_processor - INFO - Frame 90 | Progress: 74.4% | FPS: 4.9 | Tracks: 7/8
+2025-06-05 09:42:37,268 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:37,269 - src.detection.detector_tracker - DEBUG - Premier élément: ([347.6484375, 99.02421569824219, 56.399658203125, 57.309600830078125], 0.7582911252975464, 'vehicle')
+2025-06-05 09:42:37,269 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:37,269 - src.detection.detector_tracker - DEBUG - Contenu bbox: [347.6484375, 99.02421569824219, 56.399658203125, 57.309600830078125]
+2025-06-05 09:42:37,455 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     40.546     0.32607      80.889      22.029]
+2025-06-05 09:42:37,455 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 40.546490265522195
+2025-06-05 09:42:37,456 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:37,553 - src.detection.detector_tracker - DEBUG - Détections trouvées: 7
+2025-06-05 09:42:37,554 - src.detection.detector_tracker - DEBUG - Premier élément: ([347.4529113769531, 101.49968719482422, 58.49530029296875, 60.09894561767578], 0.7451552152633667, 'vehicle')
+2025-06-05 09:42:37,554 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:37,554 - src.detection.detector_tracker - DEBUG - Contenu bbox: [347.4529113769531, 101.49968719482422, 58.49530029296875, 60.09894561767578]
+2025-06-05 09:42:37,816 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     43.688    0.038016      79.665      19.379]
+2025-06-05 09:42:37,816 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 43.6879535686158
+2025-06-05 09:42:37,816 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:37,912 - src.detection.detector_tracker - DEBUG - Détections trouvées: 7
+2025-06-05 09:42:37,912 - src.detection.detector_tracker - DEBUG - Premier élément: ([347.8695068359375, 104.40217590332031, 59.55615234375, 62.32635498046875], 0.7315259575843811, 'vehicle')
+2025-06-05 09:42:37,912 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:37,912 - src.detection.detector_tracker - DEBUG - Contenu bbox: [347.8695068359375, 104.40217590332031, 59.55615234375, 62.32635498046875]
+2025-06-05 09:42:38,148 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     43.897    0.024854      79.538       19.15]
+2025-06-05 09:42:38,148 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 43.89674533108298
+2025-06-05 09:42:38,148 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:38,244 - src.detection.detector_tracker - DEBUG - Détections trouvées: 8
+2025-06-05 09:42:38,244 - src.detection.detector_tracker - DEBUG - Premier élément: ([342.72412109375, 36.61022186279297, 28.896728515625, 33.40727233886719], 0.7668269276618958, 'vehicle')
+2025-06-05 09:42:38,244 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:38,244 - src.detection.detector_tracker - DEBUG - Contenu bbox: [342.72412109375, 36.61022186279297, 28.896728515625, 33.40727233886719]
+2025-06-05 09:42:38,555 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     43.724    0.028388      79.361      19.102]
+2025-06-05 09:42:38,555 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 43.723891236595115
+2025-06-05 09:42:38,555 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:38,654 - src.detection.detector_tracker - DEBUG - Détections trouvées: 7
+2025-06-05 09:42:38,654 - src.detection.detector_tracker - DEBUG - Premier élément: ([222.7215118408203, 120.11805725097656, 77.06944274902344, 84.60867309570312], 0.7906876802444458, 'vehicle')
+2025-06-05 09:42:38,654 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:38,654 - src.detection.detector_tracker - DEBUG - Contenu bbox: [222.7215118408203, 120.11805725097656, 77.06944274902344, 84.60867309570312]
+2025-06-05 09:42:38,866 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     43.903    0.009465      79.282      18.945]
+2025-06-05 09:42:38,867 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 43.9030768530296
+2025-06-05 09:42:38,867 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:38,962 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:38,962 - src.detection.detector_tracker - DEBUG - Premier élément: ([350.641845703125, 116.34860229492188, 64.8233642578125, 67.79168701171875], 0.7709932923316956, 'vehicle')
+2025-06-05 09:42:38,962 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:38,962 - src.detection.detector_tracker - DEBUG - Contenu bbox: [350.641845703125, 116.34860229492188, 64.8233642578125, 67.79168701171875]
+2025-06-05 09:42:39,150 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.082  -0.0094578      79.202      18.787]
+2025-06-05 09:42:39,150 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.082262693328026
+2025-06-05 09:42:39,151 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:39,246 - src.detection.detector_tracker - DEBUG - Détections trouvées: 7
+2025-06-05 09:42:39,247 - src.detection.detector_tracker - DEBUG - Premier élément: ([217.9544677734375, 131.52752685546875, 78.88104248046875, 91.82318115234375], 0.7879825234413147, 'vehicle')
+2025-06-05 09:42:39,247 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:39,247 - src.detection.detector_tracker - DEBUG - Contenu bbox: [217.9544677734375, 131.52752685546875, 78.88104248046875, 91.82318115234375]
+2025-06-05 09:42:39,463 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.261   -0.028381      79.123       18.63]
+2025-06-05 09:42:39,464 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.26144875749037
+2025-06-05 09:42:39,464 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:39,559 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:39,560 - src.detection.detector_tracker - DEBUG - Premier élément: ([214.17819213867188, 136.7119598388672, 81.68817138671875, 97.02297973632812], 0.7989129424095154, 'vehicle')
+2025-06-05 09:42:39,560 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:39,560 - src.detection.detector_tracker - DEBUG - Contenu bbox: [214.17819213867188, 136.7119598388672, 81.68817138671875, 97.02297973632812]
+2025-06-05 09:42:39,747 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.441   -0.047303      79.044      18.473]
+2025-06-05 09:42:39,747 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.440635045516636
+2025-06-05 09:42:39,747 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:39,843 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:39,844 - src.detection.detector_tracker - DEBUG - Premier élément: ([351.4027099609375, 128.67251586914062, 71.25982666015625, 75.026123046875], 0.7181209325790405, 'vehicle')
+2025-06-05 09:42:39,844 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:39,844 - src.detection.detector_tracker - DEBUG - Contenu bbox: [351.4027099609375, 128.67251586914062, 71.25982666015625, 75.026123046875]
+2025-06-05 09:42:40,027 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      44.62   -0.066226      78.965      18.316]
+2025-06-05 09:42:40,028 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.61982155740683
+2025-06-05 09:42:40,028 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:40,122 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:40,122 - src.detection.detector_tracker - DEBUG - Premier élément: ([352.4932861328125, 133.02169799804688, 71.7874755859375, 77.8197021484375], 0.7580159306526184, 'vehicle')
+2025-06-05 09:42:40,122 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:40,122 - src.detection.detector_tracker - DEBUG - Contenu bbox: [352.4932861328125, 133.02169799804688, 71.7874755859375, 77.8197021484375]
+2025-06-05 09:42:40,346 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.799   -0.085149      78.886      18.159]
+2025-06-05 09:42:40,346 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.79900829316095
+2025-06-05 09:42:40,346 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:40,442 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:40,442 - src.detection.detector_tracker - DEBUG - Premier élément: ([354.3199462890625, 138.10214233398438, 74.15301513671875, 82.2725830078125], 0.797807514667511, 'vehicle')
+2025-06-05 09:42:40,442 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:40,442 - src.detection.detector_tracker - DEBUG - Contenu bbox: [354.3199462890625, 138.10214233398438, 74.15301513671875, 82.2725830078125]
+2025-06-05 09:42:40,626 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.978    -0.10407      78.807      18.001]
+2025-06-05 09:42:40,626 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.978195252778995
+2025-06-05 09:42:40,626 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:40,722 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:40,722 - src.detection.detector_tracker - DEBUG - Premier élément: ([355.6327209472656, 143.56216430664062, 75.68609619140625, 86.9986572265625], 0.804885745048523, 'vehicle')
+2025-06-05 09:42:40,722 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:40,723 - src.detection.detector_tracker - DEBUG - Contenu bbox: [355.6327209472656, 143.56216430664062, 75.68609619140625, 86.9986572265625]
+2025-06-05 09:42:40,924 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.234    0.044471      79.179      18.629]
+2025-06-05 09:42:40,926 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.23412366376192
+2025-06-05 09:42:40,927 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:41,103 - src.detection.detector_tracker - DEBUG - Détections trouvées: 7
+2025-06-05 09:42:41,104 - src.detection.detector_tracker - DEBUG - Premier élément: ([186.75247192382812, 162.9466552734375, 101.27392578125, 135.3153076171875], 0.8574776649475098, 'vehicle')
+2025-06-05 09:42:41,104 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:41,104 - src.detection.detector_tracker - DEBUG - Contenu bbox: [186.75247192382812, 162.9466552734375, 101.27392578125, 135.3153076171875]
+2025-06-05 09:42:41,324 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.131    0.088062      79.209      18.643]
+2025-06-05 09:42:41,325 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.1313065861693
+2025-06-05 09:42:41,325 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:41,466 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:41,466 - src.detection.detector_tracker - DEBUG - Premier élément: ([342.4442138671875, 46.152679443359375, 34.7694091796875, 41.09185791015625], 0.8269513249397278, 'vehicle')
+2025-06-05 09:42:41,466 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:41,466 - src.detection.detector_tracker - DEBUG - Contenu bbox: [342.4442138671875, 46.152679443359375, 34.7694091796875, 41.09185791015625]
+2025-06-05 09:42:41,652 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.231    0.088074      79.156      18.563]
+2025-06-05 09:42:41,652 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.23119716393998
+2025-06-05 09:42:41,652 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:41,747 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:41,748 - src.detection.detector_tracker - DEBUG - Premier élément: ([172.60665893554688, 187.55975341796875, 113.3797607421875, 145.878173828125], 0.9213486909866333, 'vehicle')
+2025-06-05 09:42:41,748 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:41,748 - src.detection.detector_tracker - DEBUG - Contenu bbox: [172.60665893554688, 187.55975341796875, 113.3797607421875, 145.878173828125]
+2025-06-05 09:42:41,933 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.331    0.088085      79.103      18.482]
+2025-06-05 09:42:41,933 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.33108801526269
+2025-06-05 09:42:41,933 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:42,030 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:42,030 - src.detection.detector_tracker - DEBUG - Premier élément: ([163.40863037109375, 197.7149658203125, 119.978515625, 157.033203125], 0.8735413551330566, 'vehicle')
+2025-06-05 09:42:42,030 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:42,030 - src.detection.detector_tracker - DEBUG - Contenu bbox: [163.40863037109375, 197.7149658203125, 119.978515625, 157.033203125]
+2025-06-05 09:42:42,218 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.431    0.088097       79.05      18.401]
+2025-06-05 09:42:42,218 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.43097914013742
+2025-06-05 09:42:42,218 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:42,314 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:42,314 - src.detection.detector_tracker - DEBUG - Premier élément: ([395.7223205566406, 26.237091064453125, 30.3082275390625, 27.4368896484375], 0.7452104687690735, 'vehicle')
+2025-06-05 09:42:42,314 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:42,314 - src.detection.detector_tracker - DEBUG - Contenu bbox: [395.7223205566406, 26.237091064453125, 30.3082275390625, 27.4368896484375]
+2025-06-05 09:42:42,500 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.531    0.088109      78.997       18.32]
+2025-06-05 09:42:42,501 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.53087053856417
+2025-06-05 09:42:42,501 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:42,598 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:42,598 - src.detection.detector_tracker - DEBUG - Premier élément: ([361.3966979980469, 182.5653076171875, 97.101806640625, 118.9366455078125], 0.8523284196853638, 'vehicle')
+2025-06-05 09:42:42,598 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:42,598 - src.detection.detector_tracker - DEBUG - Contenu bbox: [361.3966979980469, 182.5653076171875, 97.101806640625, 118.9366455078125]
+2025-06-05 09:42:42,782 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.631     0.08812      78.944      18.239]
+2025-06-05 09:42:42,782 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.63076221054295
+2025-06-05 09:42:42,782 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:42,879 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:42,880 - src.detection.detector_tracker - DEBUG - Premier élément: ([140.2572021484375, 229.99937438964844, 134.6669921875, 126.99977111816406], 0.7905470728874207, 'vehicle')
+2025-06-05 09:42:42,880 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:42,880 - src.detection.detector_tracker - DEBUG - Contenu bbox: [140.2572021484375, 229.99937438964844, 134.6669921875, 126.99977111816406]
+2025-06-05 09:42:43,067 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.731    0.088132      78.891      18.158]
+2025-06-05 09:42:43,067 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.730654156073754
+2025-06-05 09:42:43,067 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:43,165 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:43,165 - src.detection.detector_tracker - DEBUG - Premier élément: ([364.7616882324219, 197.31387329101562, 106.43310546875, 137.23712158203125], 0.7731021046638489, 'vehicle')
+2025-06-05 09:42:43,165 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:43,165 - src.detection.detector_tracker - DEBUG - Contenu bbox: [364.7616882324219, 197.31387329101562, 106.43310546875, 137.23712158203125]
+2025-06-05 09:42:43,358 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     44.831    0.088143      78.838      18.077]
+2025-06-05 09:42:43,358 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.83054637515657
+2025-06-05 09:42:43,358 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:43,456 - src.detection.detector_tracker - DEBUG - Détections trouvées: 5
+2025-06-05 09:42:43,457 - src.detection.detector_tracker - DEBUG - Premier élément: ([365.8439636230469, 207.45399475097656, 113.4876708984375, 146.28147888183594], 0.8799555897712708, 'vehicle')
+2025-06-05 09:42:43,457 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:43,457 - src.detection.detector_tracker - DEBUG - Contenu bbox: [365.8439636230469, 207.45399475097656, 113.4876708984375, 146.28147888183594]
+2025-06-05 09:42:43,621 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      44.93    0.088155      78.785      17.997]
+2025-06-05 09:42:43,622 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 44.93043886779143
+2025-06-05 09:42:43,622 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:43,719 - src.detection.detector_tracker - DEBUG - Détections trouvées: 7
+2025-06-05 09:42:43,719 - src.detection.detector_tracker - DEBUG - Premier élément: ([367.2591552734375, 218.37486267089844, 119.88018798828125, 139.07203674316406], 0.7606955766677856, 'vehicle')
+2025-06-05 09:42:43,719 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:43,719 - src.detection.detector_tracker - DEBUG - Contenu bbox: [367.2591552734375, 218.37486267089844, 119.88018798828125, 139.07203674316406]
+2025-06-05 09:42:43,942 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      45.03    0.088167      78.733      17.916]
+2025-06-05 09:42:43,942 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 45.03033163397831
+2025-06-05 09:42:43,942 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:44,041 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:44,041 - src.detection.detector_tracker - DEBUG - Premier élément: ([401.0633850097656, 31.244522094726562, 33.3634033203125, 30.53406524658203], 0.6723034977912903, 'vehicle')
+2025-06-05 09:42:44,041 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:44,041 - src.detection.detector_tracker - DEBUG - Contenu bbox: [401.0633850097656, 31.244522094726562, 33.3634033203125, 30.53406524658203]
+2025-06-05 09:42:44,235 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      45.13    0.088178       78.68      17.835]
+2025-06-05 09:42:44,236 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 45.13022467371721
+2025-06-05 09:42:44,236 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:44,336 - src.detection.detector_tracker - DEBUG - Détections trouvées: 7
+2025-06-05 09:42:44,336 - src.detection.detector_tracker - DEBUG - Premier élément: ([372.21356201171875, 239.4549560546875, 124.8673095703125, 117.7327880859375], 0.803125262260437, 'vehicle')
+2025-06-05 09:42:44,336 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:44,336 - src.detection.detector_tracker - DEBUG - Contenu bbox: [372.21356201171875, 239.4549560546875, 124.8673095703125, 117.7327880859375]
+2025-06-05 09:42:44,559 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      45.23     0.08819      78.627      17.754]
+2025-06-05 09:42:44,559 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 45.23011798700813
+2025-06-05 09:42:44,559 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:44,658 - src.detection.detector_tracker - DEBUG - Détections trouvées: 4
+2025-06-05 09:42:44,658 - src.detection.detector_tracker - DEBUG - Premier élément: ([373.1444091796875, 251.51031494140625, 127.10546875, 105.46600341796875], 0.7721650004386902, 'vehicle')
+2025-06-05 09:42:44,658 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:44,658 - src.detection.detector_tracker - DEBUG - Contenu bbox: [373.1444091796875, 251.51031494140625, 127.10546875, 105.46600341796875]
+2025-06-05 09:42:44,791 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [      45.33    0.088202      78.574      17.673]
+2025-06-05 09:42:44,791 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 45.33001157385108
+2025-06-05 09:42:44,791 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:44,889 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:44,889 - src.detection.detector_tracker - DEBUG - Premier élément: ([404.07342529296875, 34.78382110595703, 35.9422607421875, 32.38655090332031], 0.81690514087677, 'vehicle')
+2025-06-05 09:42:44,889 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:44,889 - src.detection.detector_tracker - DEBUG - Contenu bbox: [404.07342529296875, 34.78382110595703, 35.9422607421875, 32.38655090332031]
+2025-06-05 09:42:45,082 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     43.537     0.18722      80.562      19.589]
+2025-06-05 09:42:45,082 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 43.53745812798104
+2025-06-05 09:42:45,082 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:45,183 - src.detection.detector_tracker - DEBUG - Détections trouvées: 5
+2025-06-05 09:42:45,183 - src.detection.detector_tracker - DEBUG - Premier élément: ([405.1473693847656, 36.866886138916016, 36.08355712890625, 31.71670150756836], 0.8253456950187683, 'vehicle')
+2025-06-05 09:42:45,183 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:45,183 - src.detection.detector_tracker - DEBUG - Contenu bbox: [405.1473693847656, 36.866886138916016, 36.08355712890625, 31.71670150756836]
+2025-06-05 09:42:45,348 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     43.382     0.18876      80.769      19.668]
+2025-06-05 09:42:45,349 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 43.38193317233706
+2025-06-05 09:42:45,349 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:45,448 - src.detection.detector_tracker - DEBUG - Détections trouvées: 5
+2025-06-05 09:42:45,448 - src.detection.detector_tracker - DEBUG - Premier élément: ([406.07928466796875, 37.46196365356445, 36.669677734375, 32.80355453491211], 0.8568283319473267, 'vehicle')
+2025-06-05 09:42:45,448 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:45,448 - src.detection.detector_tracker - DEBUG - Contenu bbox: [406.07928466796875, 37.46196365356445, 36.669677734375, 32.80355453491211]
+2025-06-05 09:42:45,612 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     43.419     0.18992       80.89      19.654]
+2025-06-05 09:42:45,612 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 43.419089135585224
+2025-06-05 09:42:45,612 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:45,712 - src.detection.detector_tracker - DEBUG - Détections trouvées: 6
+2025-06-05 09:42:45,712 - src.detection.detector_tracker - DEBUG - Premier élément: ([407.2428283691406, 39.046939849853516, 36.4791259765625, 32.62026596069336], 0.7847612500190735, 'vehicle')
+2025-06-05 09:42:45,713 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:45,713 - src.detection.detector_tracker - DEBUG - Contenu bbox: [407.2428283691406, 39.046939849853516, 36.4791259765625, 32.62026596069336]
+2025-06-05 09:42:45,907 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     43.812     0.26833      80.771      19.417]
+2025-06-05 09:42:45,907 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 43.81239740609022
+2025-06-05 09:42:45,908 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:46,008 - src.detection.detector_tracker - DEBUG - Détections trouvées: 4
+2025-06-05 09:42:46,008 - src.detection.detector_tracker - DEBUG - Premier élément: ([408.15216064453125, 40.491737365722656, 37.341796875, 33.03288269042969], 0.7852330207824707, 'vehicle')
+2025-06-05 09:42:46,008 - src.detection.detector_tracker - DEBUG - Type bbox: <class 'list'>
+2025-06-05 09:42:46,008 - src.detection.detector_tracker - DEBUG - Contenu bbox: [408.15216064453125, 40.491737365722656, 37.341796875, 33.03288269042969]
+2025-06-05 09:42:46,141 - src.detection.detector_tracker - DEBUG - Track 1 bbox type: <class 'numpy.ndarray'>, contenu: [     43.856     0.28144      80.815       19.43]
+2025-06-05 09:42:46,141 - src.detection.detector_tracker - DEBUG - Premier élément bbox type: <class 'numpy.float64'>, valeur: 43.855932879235255
+2025-06-05 09:42:46,141 - src.detection.detector_tracker - ERROR - Erreur annotation frame: Cannot cast scalar from dtype('<U1') to dtype('int64') according to the rule 'safe'
+2025-06-05 09:42:46,144 - src.video_processor - INFO - Frame 120 | Progress: 99.2% | FPS: 4.4 | Tracks: 7/7
+2025-06-05 09:42:46,145 - src.utils.video_capture - WARNING - Frame manquante détectée à la position 120
+2025-06-05 09:42:46,147 - src.utils.export_manager - INFO - Export finalisé avec succès: output/cars_exemple_footage_short_tracked_20250605_094217.mp4
+2025-06-05 09:42:46,147 - src.utils.export_manager - INFO - ==================================================
+2025-06-05 09:42:46,148 - src.utils.export_manager - INFO - RÉSUMÉ DE L'EXPORT
+2025-06-05 09:42:46,148 - src.utils.export_manager - INFO - ==================================================
+2025-06-05 09:42:46,148 - src.utils.export_manager - INFO - Fichier de sortie: output/cars_exemple_footage_short_tracked_20250605_094217.mp4
+2025-06-05 09:42:46,149 - src.utils.export_manager - INFO - Durée traitement: 27.49s
+2025-06-05 09:42:46,149 - src.utils.export_manager - INFO - Frames exportées: 120
+2025-06-05 09:42:46,149 - src.utils.export_manager - INFO - FPS: 30.21978021978022
+2025-06-05 09:42:46,149 - src.utils.export_manager - INFO - Résolution: 640x360
+2025-06-05 09:42:46,149 - src.utils.export_manager - INFO - Taille fichier: 0.77 MB
+2025-06-05 09:42:46,149 - src.utils.export_manager - INFO - Ratio compression: 0.70x
+2025-06-05 09:42:46,149 - src.utils.export_manager - INFO - ==================================================
+2025-06-05 09:42:46,150 - src.utils.export_manager - INFO - Métadonnées exportées: output/cars_exemple_footage_short_tracked_20250605_094217.json
+2025-06-05 09:42:46,150 - src.video_processor - INFO - ==================================================
+2025-06-05 09:42:46,150 - src.video_processor - INFO - STATISTIQUES FINALES
+2025-06-05 09:42:46,151 - src.video_processor - INFO - ==================================================
+2025-06-05 09:42:46,151 - src.video_processor - INFO - Temps total: 27.50s
+2025-06-05 09:42:46,151 - src.video_processor - INFO - Frames traitées: 120
+2025-06-05 09:42:46,151 - src.video_processor - INFO - FPS moyen: 4.4
+2025-06-05 09:42:46,151 - src.video_processor - INFO - Tracks créés: 22
+2025-06-05 09:42:46,151 - src.video_processor - INFO - Points de trajectoire: 578
+2025-06-05 09:42:46,151 - src.video_processor - INFO - Vidéo sauvegardée: output/cars_exemple_footage_short_tracked_20250605_094217.mp4
+2025-06-05 09:42:46,152 - src.video_processor - INFO - ==================================================
+2025-06-05 09:42:46,152 - src.video_processor - INFO - Traitement terminé: 120 frames traitées
+2025-06-05 09:42:46,152 - src.utils.video_capture - INFO - Ressources vidéo libérées pour cars_exemple_footage_short.mp4

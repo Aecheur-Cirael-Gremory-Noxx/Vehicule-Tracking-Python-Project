@@ -1,0 +1,22 @@
+{
+  "input_file": "cars_exemple_footage_short.mp4",
+  "output_file": "output/cars_exemple_footage_short_tracked_20250605_094217.mp4",
+  "start_time": "2025-06-05 09:42:18",
+  "end_time": "2025-06-05 09:42:46",
+  "duration_seconds": 27.490910291671753,
+  "input_fps": 30.21978021978022,
+  "output_fps": 30.21978021978022,
+  "input_resolution": [
+    640,
+    360
+  ],
+  "output_resolution": [
+    640,
+    360
+  ],
+  "codec": "H264",
+  "quality": 90,
+  "frames_processed": 120,
+  "file_size_mb": 0.771885871887207,
+  "compression_ratio": 0.701638659667079
+}

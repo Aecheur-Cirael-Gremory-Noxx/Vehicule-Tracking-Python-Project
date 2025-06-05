@@ -182,10 +182,10 @@ class VideoProcessor:
             Frame annotée ou None en cas d'erreur
         """
         try:
-            # 1. Détection et tracking avec YOLO + DeepSORT
-            raw_tracks, _ = self.detector_tracker.process_frame(frame)
+            # 1. Détection et tracking avec YOLO + DeepSORT (includes annotation)
+            raw_tracks, annotated_frame = self.detector_tracker.process_frame(frame)
             
-            # 2. Gestion des tracks (filtrage confirmés/tentatives)
+            # 2. Gestion des tracks (filtrage confirmés/tentatives) pour stats
             timestamp = time.time()
             confirmed_tracks, tentative_tracks = self.track_manager.process_tracks(
                 raw_tracks, frame_number
@@ -202,11 +202,7 @@ class VideoProcessor:
             
             self.trajectory_storage.process_tracks_batch(all_tracks_data, timestamp)
             
-            # 4. Visualisation
-            all_track_infos = confirmed_tracks + tentative_tracks
-            annotated_frame = self.visualizer.render_tracks(frame, all_track_infos)
-            
-            # 5. Optionnel: dessiner les trajectoires
+            # 4. Optionnel: dessiner les trajectoires sur l'image déjà annotée
             if config.DRAW_TRAJECTORIES:
                 for track_info in confirmed_tracks:
                     trajectory = self.trajectory_storage.get_trajectory_centers(track_info.id)
